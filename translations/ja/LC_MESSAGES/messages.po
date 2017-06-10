@@ -1,0 +1,311 @@
+# Japanese translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-06-10 17:13+0800\n"
+"PO-Revision-Date: 2014-12-10 19:22+0900\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language: ja\n"
+"Language-Team: ja <LL@li.org>\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: templates/archives.html:2
+#, python-format
+msgid "Archives - %(SITENAME)s"
+msgstr "文章一覧 - %(SITENAME)s"
+
+#: templates/archives.html:7
+msgid "Archives"
+msgstr "文章一覧"
+
+#: templates/archives.html:14
+#, python-format
+msgid "Archives for %(SITENAME)s"
+msgstr "%(SITENAME)s　の文章一覧"
+
+#: templates/article.html:75 templates/article.html:120
+msgid "Table of Contents"
+msgstr "目次"
+
+#: templates/article.html:94
+#, python-format
+msgid "Permalink to %(title)s"
+msgstr "%(title)s　へのパーマリンク"
+
+#: templates/article.html:111
+msgid "License"
+msgstr ""
+
+#: templates/author.html:3
+#, python-format
+msgid "Articles by %(author)s - %(SITENAME)s"
+msgstr "%(author)s が書いた文章 - %(SITENAME)s"
+
+#: templates/authors.html:3
+#, python-format
+msgid "Authors - %(SITENAME)s"
+msgstr "著者一覧 - %(SITENAME)s"
+
+#: templates/base.html:94 templates/includes/aboutme.html:9
+#, python-format
+msgid "About %(AUTHOR)s"
+msgstr "%(AUTHOR)s に連絡"
+
+#: templates/base.html:137 templates/base.html:138
+#: templates/includes/sidebar.html:10 templates/includes/sidebar.html:11
+#: templates/search.html:3
+msgid "Search"
+msgstr "検索"
+
+#: templates/base.html:147
+msgid "All"
+msgstr "一覧"
+
+#: templates/base.html:148
+msgid "Atom feeds for all articles"
+msgstr "全ての文章のフィード"
+
+#: templates/categories.html:2
+#, python-format
+msgid "Categories - %(SITENAME)s"
+msgstr "分類一覧 - %(SITENAME)s"
+
+#: templates/categories.html:8 templates/category.html:13
+#: templates/includes/sidebar.html:54
+msgid "Categories"
+msgstr "分類一覧"
+
+#: templates/categories.html:15
+#, python-format
+msgid "All Categories for %(SITENAME)s"
+msgstr "%(SITENAME)s の分類一覧"
+
+#: templates/category.html:15
+#, python-format
+msgid "Feeds for category %(tag)s"
+msgstr "分類 %(tag)s のフィード"
+
+#: templates/index.html:15
+msgid "All Articles"
+msgstr "文章の一覧"
+
+#: templates/includes/article_info.html:15 templates/page.html:59
+msgid "Show source code of this page"
+msgstr "このページのソースコードを表示する"
+
+#: templates/search.html:64
+msgid "'No title'"
+msgstr ""
+
+#: templates/search.html:65
+msgid "'Showing results for'"
+msgstr ""
+
+#: templates/search.html:66
+msgid "'Search instead for'"
+msgstr ""
+
+#: templates/search.html:67
+msgid "'1 result'"
+msgstr ""
+
+#: templates/search.html:68
+msgid "'results'"
+msgstr ""
+
+#: templates/search.html:69
+msgid "'Back'"
+msgstr ""
+
+#: templates/search.html:70
+msgid "'More'"
+msgstr ""
+
+#: templates/search.html:71
+msgid "'Nothing found.'"
+msgstr ""
+
+#: templates/search.html:72
+msgid "'Common words are largely ignored.'"
+msgstr ""
+
+#: templates/search.html:73
+msgid "'Search too short'"
+msgstr ""
+
+#: templates/search.html:74
+msgid "'Should be one character or more.'"
+msgstr ""
+
+#: templates/search.html:75
+msgid "'Should be'"
+msgstr ""
+
+#: templates/search.html:76
+msgid "'characters or more.'"
+msgstr ""
+
+#: templates/search.html:77
+msgid "'seconds'"
+msgstr ""
+
+#: templates/search.html:78
+msgid "'Searches related to'"
+msgstr ""
+
+#: templates/includes/sidebar_tags.html:7 templates/tag.html:13
+#: templates/tags.html:8
+msgid "Tags"
+msgstr "タグ雲"
+
+#: templates/tag.html:15
+#, python-format
+msgid "Feeds for tag %(tag)s"
+msgstr "タグ %(tag)s のフィード"
+
+#: templates/tags.html:2
+#, python-format
+msgid "Tags - %(SITENAME)s"
+msgstr "タグ一覧 - %(SITENAME)s"
+
+#: templates/tags.html:15
+#, python-format
+msgid "Tags for %(SITENAME)s"
+msgstr "%(SITENAME)s　のタグ一覧"
+
+#: templates/includes/comments.html:12 templates/includes/comments.html:77
+msgid "comments"
+msgstr "コメント"
+
+#: templates/includes/comments.html:20
+msgid "Leave a comment from "
+msgstr "GitHub アカウントで"
+
+#: templates/includes/comments.html:20
+msgid " this post's issue page "
+msgstr "この文章のIssueページ"
+
+#: templates/includes/comments.html:20
+msgid " using your Github account."
+msgstr "にコメントしてください"
+
+#: templates/includes/comments.html:51
+msgid "left a comment on"
+msgstr "コメントした"
+
+#: templates/includes/footer.html:12
+msgid "Powered by"
+msgstr "ここは"
+
+#: templates/includes/footer.html:13
+msgid "generator"
+msgstr "で生成する"
+
+#: templates/includes/friends.html:9
+msgid "Friends"
+msgstr ""
+
+#: templates/includes/github.html:7
+msgid "GitHub Repos"
+msgstr "GitHubのリポ"
+
+#: templates/includes/github.html:18
+#, python-format
+msgid ""
+"<a href=\"https://github.com/%(GITHUB_USER)s\">@%(GITHUB_USER)s</a> on "
+"GitHub"
+msgstr ""
+
+#: templates/includes/links.html:5
+msgid "Links"
+msgstr "友達リンク"
+
+#: templates/includes/promotion.html:7
+msgid "Promotions"
+msgstr ""
+
+#: templates/includes/twitter_timeline.html:8
+msgid "Latest Tweets"
+msgstr "ツイート"
+
+#~ msgid "Top"
+#~ msgstr "戻る"
+
+#~ msgid "and"
+#~ msgstr "及び"
+
+#~ msgid " generator "
+#~ msgstr ""
+
+#~ msgid "on GitHub"
+#~ msgstr ""
+
+#~ msgid "This is part %(index)s of the \"%(name)s\" series:"
+#~ msgstr "この文章は \"%(name)s\"　シリーズの %(index)s 番目の文章："
+
+#~ msgid "Toggle navigation"
+#~ msgstr "ナビの切り替え"
+
+#~ msgid "Show pdf version of this page"
+#~ msgstr "このページの印刷版PDFファイルを表示する"
+
+#~ msgid "Show captured png of this page"
+#~ msgstr "このページのスクリーンショットPNGファイルを表示する"
+
+#~ msgid "Latest Weibo"
+#~ msgstr "ツイート"
+
+#~ msgid " No title "
+#~ msgstr ""
+
+#~ msgid " Showing results for "
+#~ msgstr ""
+
+#~ msgid " Search instead for "
+#~ msgstr ""
+
+#~ msgid " 1 result "
+#~ msgstr ""
+
+#~ msgid " results "
+#~ msgstr ""
+
+#~ msgid " Back "
+#~ msgstr ""
+
+#~ msgid " More "
+#~ msgstr ""
+
+#~ msgid " Nothing found. "
+#~ msgstr ""
+
+#~ msgid " Common words are largely ignored. "
+#~ msgstr ""
+
+#~ msgid " Search too short "
+#~ msgstr ""
+
+#~ msgid " Should be one character or more. "
+#~ msgstr ""
+
+#~ msgid " Should be "
+#~ msgstr ""
+
+#~ msgid " characters or more. "
+#~ msgstr ""
+
+#~ msgid " seconds "
+#~ msgstr ""
+
+#~ msgid " Searches related to "
+#~ msgstr ""
+

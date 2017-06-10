@@ -46,12 +46,12 @@ textarea {
 // Links
 
 a {
-  color: @link-color;
+  color: @text-color;
   text-decoration: none;
 
   &:hover,
   &:focus {
-    color: @link-hover-color;
+    color: @text-color;
     text-decoration: @link-hover-decoration;
   }
 
@@ -78,34 +78,34 @@ img {
 }
 
 // Responsive images (ensure images don't scale beyond their parents)
-.img-responsive {
-  .img-responsive();
-}
+///.img-responsive {
+///  .img-responsive();
+///}
 
 // Rounded corners
-.img-rounded {
-  border-radius: @border-radius-large;
-}
+///.img-rounded {
+///  border-radius: @border-radius-large;
+///}
 
 // Image thumbnails
 //
 // Heads up! This is mixin-ed into thumbnails.less for `.thumbnail`.
-.img-thumbnail {
-  padding: @thumbnail-padding;
-  line-height: @line-height-base;
-  background-color: @thumbnail-bg;
-  border: 1px solid @thumbnail-border;
-  border-radius: @thumbnail-border-radius;
-  .transition(all .2s ease-in-out);
-
-  // Keep them at most 100% wide
-  .img-responsive(inline-block);
-}
+///.img-thumbnail {
+///  padding: @thumbnail-padding;
+///  line-height: @line-height-base;
+///  background-color: @thumbnail-bg;
+///  border: 1px solid @thumbnail-border;
+///  border-radius: @thumbnail-border-radius;
+///  .transition(all .2s ease-in-out);
+///
+///  // Keep them at most 100% wide
+///  .img-responsive(inline-block);
+///}
 
 // Perfect circle
-.img-circle {
-  border-radius: 50%; // set radius in percents
-}
+///.img-circle {
+///  border-radius: 50%; // set radius in percents
+///}
 
 
 // Horizontal rules
@@ -137,14 +137,14 @@ hr {
 // Useful for "Skip to main content" links; see http://www.w3.org/TR/2013/NOTE-WCAG20-TECHS-20130905/G1
 // Credit: HTML5 Boilerplate
 
-.sr-only-focusable {
-  &:active,
-  &:focus {
-    position: static;
-    width: auto;
-    height: auto;
-    margin: 0;
-    overflow: visible;
-    clip: auto;
-  }
-}
+///.sr-only-focusable {
+///  &:active,
+///  &:focus {
+///    position: static;
+///    width: auto;
+///    height: auto;
+///    margin: 0;
+///    overflow: visible;
+///    clip: auto;
+///  }
+///}

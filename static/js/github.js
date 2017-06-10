@@ -31,16 +31,18 @@ var github = (function(){
   }
   return {
     showRepos: function(options){
-      $.ajax({
-          url: "https://api.github.com/users/"+options.user+"/repos?callback=?"
-        , dataType: 'jsonp'
-        , error: function (err) { $(options.target + ' li.loading').addClass('error').text("Error loading feed"); }
-        , success: function(data) {
+      var url = "https://api.github.com/users/"+options.user+"/repos"
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.setRequestHeader('Content-Type', 'application/json');
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          var data = JSON.parse(xhr.responseText);
           var repos = [];
-          if (!data || !data.data) { return; }
-          for (var i = 0; i < data.data.length; i++) {
-            if (options.skip_forks && data.data[i].fork) { continue; }
-            repos.push(data.data[i]);
+          if (!data) { console.log(data); return; }
+          for (var i = 0; i < data.length; i++) {
+            if (options.skip_forks && data[i].fork) { continue; }
+            repos.push(data[i]);
           }
           repos.sort(function(a, b) {
             var aDate = new Date(a.pushed_at).valueOf(),
@@ -52,8 +54,11 @@ var github = (function(){
 
           if (options.count) { repos.splice(options.count); }
           render(options.target, repos);
+        } else {
+          $(options.target + ' li.loading').addClass('error').text("Error loading feed");
         }
-      });
+      }
+      xhr.send();
     }
   };
 })();

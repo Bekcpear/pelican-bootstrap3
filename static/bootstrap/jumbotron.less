@@ -4,10 +4,10 @@
 
 
 .jumbotron {
-  padding: @jumbotron-padding (@jumbotron-padding / 2);
-  margin-bottom: @jumbotron-padding;
-  color: @jumbotron-color;
-  background-color: @jumbotron-bg;
+  ///padding: @jumbotron-padding (@jumbotron-padding / 2);
+  ///margin-bottom: @jumbotron-padding;
+  ///color: @jumbotron-color;
+  ///background-color: @jumbotron-bg;
 
   h1,
   .h1 {
@@ -18,6 +18,10 @@
     margin-top: 2em; 
     margin-bottom: 1em; 
   } 
+
+  dl {
+    padding-left: 2em;
+  }
 
 
   > hr {
@@ -43,12 +47,12 @@
   
 
   @media screen and (min-width: @screen-sm-min) {
-    padding: (@jumbotron-padding * 1.6) 0;
+    ///padding: (@jumbotron-padding * 1.6) 0;
 
     .container &,
     .container-fluid & {
-      padding-left:  (@jumbotron-padding * 2);
-      padding-right: (@jumbotron-padding * 2);
+      ///padding-left:  (@jumbotron-padding * 2);
+      ///padding-right: (@jumbotron-padding * 2);
     }
 
     h1, .h1 { font-size: ceil(@font-size-h1 * 1.1); }
@@ -58,7 +62,7 @@
     h5, .h5 { font-size: ceil(@font-size-h5 * 1.1); }
     h6, .h6 { font-size: ceil(@font-size-h6 * 1.1); }
 
-    p, ol, ul, td {
+    p, ol, ul, td, dl {
       margin-bottom: (@jumbotron-padding / 2);
       font-size: ceil((@font-size-base * 1.1));
       font-weight: 120;
@@ -66,7 +70,7 @@
   }
 
   @media screen and (min-width: @screen-md-min) {
-    p, ol, ul, td {
+    p, ol, ul, td, dl {
       font-size: ceil((@font-size-base * 1.2));
       font-weight: 140;
     }
@@ -80,7 +84,7 @@
   }
 
   @media screen and (min-width: @screen-lg-min) {
-    p, ol, ul, td {
+    p, ol, ul, td, dl {
       font-size: ceil(@font-size-base * 1.4);
       font-weight: 170;
     }
@@ -94,7 +98,7 @@
   }
 
   @media screen and (min-width: @screen-xl-min) {
-    p, ol, ul, td {
+    p, ol, ul, td, dl {
       font-size: ceil(@font-size-base * 1.6);
       font-weight: 200;
     }
@@ -109,15 +113,15 @@
 
   @media screen and (min-width: @screen-md-min) {
     .panel {
-      float: right;
-      clear: both;
-      width: floor(@container-md/2 - 168px); /* for margin */
+      ///float: right;
+      ///clear: both;
+      ///width: floor(@container-md/2 - 168px); /* for margin */
       margin: 10px;
       .panel-heading {
         font-size: ceil((@font-size-base * 1.2));
         font-weight: 140;
       }
-      p, ol, ul, td {
+      p, ol, ul, td, dl {
         font-size: ceil((@font-size-base * 1.1));
         font-weight: 120;
       }
@@ -126,15 +130,15 @@
 
   @media screen and (min-width: @screen-lg-min) {
     .panel {
-      float: right;
-      clear: both;
-      width: floor(@container-lg/2 - 160px);; /* for margin */
+      ///float: right;
+      ///clear: both;
+      ///width: floor(@container-lg/2 - 160px);; /* for margin */
       margin: 10px;
       .panel-heading {
         font-size: ceil((@font-size-base * 1.4));
         font-weight: 170;
       }
-      p, ol, ul, td {
+      p, ol, ul, td, dl {
         font-size: ceil((@font-size-base * 1.2));
         font-weight: 140;
       }
@@ -143,15 +147,15 @@
 
   @media screen and (min-width: @screen-xl-min) {
     .panel {
-      float: right;
-      clear: both;
-      width: floor(@container-xl/3 - 100px);; /* for margin */
+      ///float: right;
+      ///clear: both;
+      ///width: floor(@container-xl/3 - 100px);; /* for margin */
       margin: 10px;
       .panel-heading {
         font-size: ceil((@font-size-base * 1.6));
         font-weight: 200;
       }
-      p, ol, ul, td {
+      p, ol, ul, td, dl {
         font-size: ceil((@font-size-base * 1.4));
         font-weight: 170;
       }

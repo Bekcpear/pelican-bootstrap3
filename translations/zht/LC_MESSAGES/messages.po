@@ -1,0 +1,256 @@
+# Chinese (Traditional, Hong Kong SAR China) translations for PROJECT.
+# Copyright (C) 2014 ORGANIZATION
+# This file is distributed under the same license as the PROJECT project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2014.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: PROJECT VERSION\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2017-06-10 17:13+0800\n"
+"PO-Revision-Date: 2017-06-03 01:23+0800\n"
+"Last-Translator: \n"
+"Language: zh\n"
+"Language-Team: zh_Hant_HK <LL@li.org>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+
+#: templates/archives.html:2
+#, python-format
+msgid "Archives - %(SITENAME)s"
+msgstr "歸檔 - %(SITENAME)s"
+
+#: templates/archives.html:7
+msgid "Archives"
+msgstr "歸檔"
+
+#: templates/archives.html:14
+#, python-format
+msgid "Archives for %(SITENAME)s"
+msgstr "%(SITENAME)s 的歸檔"
+
+#: templates/article.html:75 templates/article.html:120
+msgid "Table of Contents"
+msgstr "目錄"
+
+#: templates/article.html:94
+#, python-format
+msgid "Permalink to %(title)s"
+msgstr "到『 %(title)s 』的永久連結"
+
+#: templates/article.html:111
+msgid "License"
+msgstr "授權方式"
+
+#: templates/author.html:3
+#, python-format
+msgid "Articles by %(author)s - %(SITENAME)s"
+msgstr "%(author)s 撰寫的文章 - %(SITENAME)s"
+
+#: templates/authors.html:3
+#, python-format
+msgid "Authors - %(SITENAME)s"
+msgstr "作者 - %(SITENAME)s"
+
+#: templates/base.html:94 templates/includes/aboutme.html:9
+#, python-format
+msgid "About %(AUTHOR)s"
+msgstr "關於 %(AUTHOR)s"
+
+#: templates/base.html:137 templates/base.html:138
+#: templates/includes/sidebar.html:10 templates/includes/sidebar.html:11
+#: templates/search.html:3
+msgid "Search"
+msgstr "搜尋"
+
+#: templates/base.html:147
+msgid "All"
+msgstr "歸檔"
+
+#: templates/base.html:148
+msgid "Atom feeds for all articles"
+msgstr "訂閱全部文章"
+
+#: templates/categories.html:2
+#, python-format
+msgid "Categories - %(SITENAME)s"
+msgstr "全部分類 - %(SITENAME)s"
+
+#: templates/categories.html:8 templates/category.html:13
+#: templates/includes/sidebar.html:54
+msgid "Categories"
+msgstr "全部分類"
+
+#: templates/categories.html:15
+#, python-format
+msgid "All Categories for %(SITENAME)s"
+msgstr "%(SITENAME)s 的全部分類"
+
+#: templates/category.html:15
+#, python-format
+msgid "Feeds for category %(tag)s"
+msgstr "訂閱分類 %(tag)s"
+
+#: templates/index.html:15
+msgid "All Articles"
+msgstr "全部文章"
+
+#: templates/includes/article_info.html:15 templates/page.html:59
+msgid "Show source code of this page"
+msgstr "顯示這篇文章的原始檔"
+
+#: templates/search.html:64
+msgid "'No title'"
+msgstr "'無標題'"
+
+#: templates/search.html:65
+msgid "'Showing results for'"
+msgstr "'結果針對：'"
+
+#: templates/search.html:66
+msgid "'Search instead for'"
+msgstr "'實際搜尋替換為：'"
+
+#: templates/search.html:67
+msgid "'1 result'"
+msgstr "'一個結果'"
+
+#: templates/search.html:68
+msgid "'results'"
+msgstr "'個結果'"
+
+#: templates/search.html:69
+msgid "'Back'"
+msgstr "'返回'"
+
+#: templates/search.html:70
+msgid "'More'"
+msgstr "'更多'"
+
+#: templates/search.html:71
+msgid "'Nothing found.'"
+msgstr "'此處無草。'"
+
+#: templates/search.html:72
+msgid "'Common words are largely ignored.'"
+msgstr "'搜尋內容太廣啦，換一個吧。'"
+
+#: templates/search.html:73
+msgid "'Search too short'"
+msgstr "'搜尋內容太短'"
+
+#: templates/search.html:74
+msgid "'Should be one character or more.'"
+msgstr "'需要一個或多個字元。'"
+
+#: templates/search.html:75
+msgid "'Should be'"
+msgstr "'需要'"
+
+#: templates/search.html:76
+msgid "'characters or more.'"
+msgstr "'個或多個字元。'"
+
+#: templates/search.html:77
+msgid "'seconds'"
+msgstr "'秒'"
+
+#: templates/search.html:78
+msgid "'Searches related to'"
+msgstr "'搜尋與其相關：'"
+
+#: templates/includes/sidebar_tags.html:7 templates/tag.html:13
+#: templates/tags.html:8
+msgid "Tags"
+msgstr "標籤雲"
+
+#: templates/tag.html:15
+#, python-format
+msgid "Feeds for tag %(tag)s"
+msgstr "訂閱標籤 %(tag)s"
+
+#: templates/tags.html:2
+#, python-format
+msgid "Tags - %(SITENAME)s"
+msgstr "全部標籤 - %(SITENAME)s"
+
+#: templates/tags.html:15
+#, python-format
+msgid "Tags for %(SITENAME)s"
+msgstr "%(SITENAME)s 的全部標籤"
+
+#: templates/includes/comments.html:12 templates/includes/comments.html:77
+msgid "comments"
+msgstr "留言（需要科學上網以開啟 Disqus）"
+
+#: templates/includes/comments.html:20
+msgid "Leave a comment from "
+msgstr "請用你的 GitHub 賬戶登入並在"
+
+#: templates/includes/comments.html:20
+msgid " this post's issue page "
+msgstr "這篇文章的 Issue 頁下"
+
+#: templates/includes/comments.html:20
+msgid " using your Github account."
+msgstr "留言"
+
+#: templates/includes/comments.html:51
+msgid "left a comment on"
+msgstr "留言於"
+
+#: templates/includes/footer.html:12
+msgid "Powered by"
+msgstr "網站由"
+
+#: templates/includes/footer.html:13
+msgid "generator"
+msgstr "驅動"
+
+#: templates/includes/friends.html:9
+msgid "Friends"
+msgstr ""
+
+#: templates/includes/github.html:7
+msgid "GitHub Repos"
+msgstr "GitHub 倉庫"
+
+#: templates/includes/github.html:18
+#, python-format
+msgid ""
+"<a href=\"https://github.com/%(GITHUB_USER)s\">@%(GITHUB_USER)s</a> on "
+"GitHub"
+msgstr ""
+"在 GitHub 上找 <a "
+"href=\"https://github.com/%(GITHUB_USER)s\">%(GITHUB_USER)s</a>"
+
+#: templates/includes/links.html:5
+msgid "Links"
+msgstr "友情連結"
+
+#: templates/includes/promotion.html:7
+msgid "Promotions"
+msgstr "促銷"
+
+#: templates/includes/twitter_timeline.html:8
+msgid "Latest Tweets"
+msgstr "最新推文"
+
+#~ msgid "This is part %(index)s of the \"%(name)s\" series:"
+#~ msgstr "這篇文章是 \"%(name)s\" 系列文章的第 %(index)s 篇："
+
+#~ msgid "Toggle navigation"
+#~ msgstr "切換導航"
+
+#~ msgid "Show pdf version of this page"
+#~ msgstr "顯示這篇文章的印刷版 PDF 檔案"
+
+#~ msgid "Show captured png of this page"
+#~ msgstr "顯示這篇文章的截圖 PNG 檔案"
+
+#~ msgid "Latest Weibo"
+#~ msgstr "最新微博"
+

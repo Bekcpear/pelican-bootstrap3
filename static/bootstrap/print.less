@@ -13,6 +13,7 @@
         color: #000 !important; // Black prints faster: h5bp.com/s
         box-shadow: none !important;
         text-shadow: none !important;
+        outline: none !important;
     }
 
     a,
@@ -31,14 +32,58 @@
     // Don't show links that are fragment identifiers,
     // or use the `javascript:` pseudo protocol
     a[href^="#"]:after,
-    a[href^="javascript:"]:after {
+    a[href^="javascript:"]:after,
+    .page-header a[href]:after,
+    .breadcrumb a[href]:after {
         content: "";
+    }
+
+    a[href].external {
+      border-bottom: none !important;
+      &:after {
+        content: " (" attr(href) ")" !important;
+        display: inline !important;
+        margin-left: 0 !important;
+        width: initial !important;
+        height: initial !important;
+        opacity: 1 !important;
+        font-size: inherit !important;
+        line-height: initial !important;
+        position: inherit !important;
+        top: initial !important;
+        vertical-align: initial !important;
+        background-image: none !important;
+      }
     }
 
     pre,
     blockquote {
         border: 1px solid #999;
         page-break-inside: avoid;
+        overflow: visible;
+    }
+
+    .page-header .panel-body {
+        border-top: 1px solid #e0e0e0;
+        page-break-inside: avoid;
+    }
+
+    .page-header span.published {
+      &:before {
+        content: 'Published at:';
+      }
+      time[title]:after {
+        content: " " attr(title);
+      }
+    }
+
+    .page-header span.modified {
+      &:before {
+        content: 'Modified at:';
+      }
+      time[title]:after {
+        content: " " attr(title);
+      }
     }
 
     thead {
@@ -46,6 +91,7 @@
     }
 
     tr,
+    dl,
     img {
         page-break-inside: avoid;
     }
@@ -74,22 +120,50 @@
         background: #fff !important;
     }
 
-    // Bootstrap components
-    .navbar {
-        display: none;
+    article .license-desc #license-desc {
+      width: initial;
+      padding-left: 55px;
+      display: block;
+      visibility: visible;
     }
+
+    // Bootstrap components
+    footer,
+    #sidebar,
+    .navbar,
+    article .license-desc > a,
+    .page-header .control {
+      display: none !important;
+    }
+
+
+    h1 a.toc-backref,
+    h2 a.toc-backref,
+    h3 a.toc-backref,
+    h4 a.toc-backref,
+    h5 a.toc-backref,
+    h6 a.toc-backref,
+    .entry-content a.footnote-reference,
+    .entry-content .toc a {
+      border-bottom: 0;
+    }
+
     .btn,
     .dropup > .btn {
         > .caret {
             border-top-color: #000 !important;
         }
     }
+    .panel,
     .label {
-        border: 1px solid #000;
+        border: 1px solid #333;
     }
 
     .table {
+        display: table !important;
+        table-layout: fixed;
         border-collapse: collapse !important;
+        page-break-inside: avoid;
 
         td,
         th {
@@ -102,6 +176,5 @@
             border: 1px solid #ddd !important;
         }
     }
-
     // Bootstrap specific changes end
 }

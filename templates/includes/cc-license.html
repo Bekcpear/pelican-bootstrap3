@@ -32,9 +32,12 @@
 {# ------------------------------------------------------------------------ #}
 {% macro cc_license_mark(cc_name,
                          derivatives, commercial,
+                         lang, desc=false,
+                         cc_title_suffix="",
                          br_after_icon=false,
                          attr_markup=false,
                          attr_props={}) %}
+
   {% if cc_name %}
     {% set cc_name = cc_name|lower|replace("cc-","") %}
   {% else %}
@@ -43,22 +46,97 @@
     {% if (not commercial) or (commercial|lower == "no") %}
       {% set cc_name = cc_name ~ "-nc" %}
       {% set cc_title_suffix = "-NonCommercial" %}
+      {% if lang == "zht" %}
+        {% set cc_title_suffix = "─非商業性" %}
+      {% elif lang == "zh" %}
+        {% set cc_title_suffix = "─非商业性使用" %}
+      {% endif %}
     {% endif %}
     {% if derivatives|lower == "no" %}
       {% set cc_name = cc_name ~ "-nd" %}
-      {% set cc_title_suffix = cc_title_suffix ~ "-NoDerivatives" %}
+      {% if lang == "zht" %}
+        {% set cc_title_suffix = cc_title_suffix ~ "─禁止改作" %}
+      {% elif lang == "zh" %}
+        {% set cc_title_suffix = cc_title_suffix ~ "─禁止演绎" %}
+      {% else %}
+        {% set cc_title_suffix = cc_title_suffix ~ "-NoDerivatives" %}
+      {% endif %}
     {% elif derivatives|lower == "sharealike" %}
       {% set cc_name = cc_name ~ "-sa" %}
-      {% set cc_title_suffix = cc_title_suffix ~ "-ShareAlike" %}
+      {% if lang == "zht" %}
+        {% set cc_title_suffix = cc_title_suffix ~ "─相同方式分享" %}
+      {% elif lang == "zh" %}
+        {% set cc_title_suffix = cc_title_suffix ~ "─相同方式共享" %}
+      {% else %}
+        {% set cc_title_suffix = cc_title_suffix ~ "-ShareAlike" %}
+      {% endif %}
     {% endif %}
   {% endif %}
-  {% set cc_title, cc_uri, cc_icon = ("Creative Commons Attribution 4.0 InternationalCCSUFFIX License","http://creativecommons.org/licenses/CCNAME/4.0/","//i.creativecommons.org/l/CCNAME/4.0/80x15.png") %}
-  <a rel="license" href="{{ cc_uri|replace('CCNAME',cc_name) }}"><img alt="Creative Commons License" style="border-width:0" src="{{ cc_icon|replace('CCNAME',cc_name) }}" /></a>
-  {% if br_after_img %}<br/>{% endif %}
-  {% if attr_markup %}
-    &quot;<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title">{{ attr_props['title'] }}</span>&quot; by <a xmlns:cc="http://creativecommons.org/ns#" href="{{ attr_props['url'] }}" property="cc:attributionName" rel="cc:attributionURL">{{ attr_props['name'] }}</a> is
-  {% else %}
-    <!-- Content -->
+  {% set cc_url_suffix = "" %}
+  {% set cc_title = "Creative Commons AttributionCCSUFFIX 4.0 International License" %}
+  {% set cc_d0    = "Except where otherwise noted," %}
+  {% set cc_d00  = "&quot;" %}
+  {% set cc_d01  = "&quot;" %}
+  {% set cc_d10   = " by " %}
+  {% set cc_d11   = "" %}
+  {% set cc_d1    = " is" %}
+  {% set cc_d2    = "content on this site is" %}
+  {% set cc_d3    = " licensed under a " %}
+  {% set cc_d4    = "." %}
+  {% set cc_d5    = "This article is licensed by " %}
+  {% set cc_d6    = " under the " %}
+  {% set cc_d7    = ". If you distribute this article, or a modified version of it, you must provide attribution to " %}
+  {% set cc_d8    = ", and provide a " %}
+  {% set cc_d9    = "link" %}
+  {% set cc_dx    = " to the original." %}
+  {% if lang == "zh" %}
+    {% set cc_title = "知识共享署名CCSUFFIX 4.0 国际 许可协议" %}
+    {% set cc_url_suffix = "deed.zh" %}
+    {% set cc_d0  = "除另外有注明，" %}
+    {% set cc_d00 = "「" %}
+    {% set cc_d01 = "」" %}
+    {% set cc_d10 = "（作者: " %}
+    {% set cc_d11 = "）" %}
+    {% set cc_d1  = "" %}
+    {% set cc_d2  = "本站上内容都" %}
+    {% set cc_d3  = "采用" %}
+    {% set cc_d4  = "进行许可。" %}
+    {% set cc_d5    = "本文由 " %}
+    {% set cc_d6    = " 采用 " %}
+    {% set cc_d7    = " 进行许可。如果你发布这篇文章或者这篇文章的修改版，那么你必须同时注明本文原作者署名为 " %}
+    {% set cc_d8    = " 以及到本文原文的" %}
+    {% set cc_d9    = "链接" %}
+    {% set cc_dx    = "。" %}
+  {% elif lang == "zht" %}
+    {% set cc_title = "創用 CC 姓名標示CCSUFFIX 4.0 國際 授權條款" %}
+    {% set cc_url_suffix = "deed.zh_TW" %}
+    {% set cc_d0  = "除另有註明，" %}
+    {% set cc_d00 = "「" %}
+    {% set cc_d01 = "」" %}
+    {% set cc_d10 = "（著作人: " %}
+    {% set cc_d11 = "）" %}
+    {% set cc_d1  = "" %}
+    {% set cc_d2  = "網站之內容皆" %}
+    {% set cc_d3  = "採用" %}
+    {% set cc_d4  = "授權。" %}
+    {% set cc_d5    = "本文由 " %}
+    {% set cc_d6    = " 製作，以 " %}
+    {% set cc_d7    = " 釋出。如果你釋出這篇文章或者這篇文章的修改版，那麼你必須同時註明本文原作者署名為 " %}
+    {% set cc_d8    = " 以及到本文原文的" %}
+    {% set cc_d9    = "連結" %}
+    {% set cc_dx    = "。" %}
   {% endif %}
-  <!-- licensed under a <a rel="license" href="{{ cc_uri|replace('CCNAME',cc_name) }}">{{ cc_title|replace('CCSUFFIX',cc_title_suffix) }}</a>, except where indicated otherwise. -->
+  {% set cc_title = cc_title|replace('CCSUFFIX',cc_title_suffix) %}
+  {% set cc_uri   = "http://creativecommons.org/licenses/CCNAME/4.0/" ~ cc_url_suffix %}
+  {% set cc_icon  = "/theme/images/cc/CCNAME/4.0/80x15.png" %}
+
+  {% if (not desc) %}
+  <a class="license" rel="license" href="{{ cc_uri|replace('CCNAME',cc_name) }}"><img alt="Creative Commons License" style="border-width:0" src="{{ cc_icon|replace('CCNAME',cc_name) }}" /></a>
+  {% if br_after_icon %}<br/>{% endif %}
+  {{ cc_d0 }} 
+  {% if attr_markup %}{{ cc_d00 }}<span xmlns:dct="http://purl.org/dc/terms/" property="dct:title" about="{{ attr_props['arturl'] }}">{{ attr_props['title'] }}</span>{{ cc_d01 }}{{ cc_d10 }}<a xmlns:cc="http://creativecommons.org/ns#" href="{{ attr_props['url'] }}" property="cc:attributionName" rel="cc:attributionURL">{{ attr_props['name'] }}</a>{{ cc_d11 }}{{ cc_d1 }}{% else %}{{ cc_d2 }}{% endif %}{{ cc_d3 }}<a class="license" rel="license" href="{{ cc_uri|replace('CCNAME',cc_name) }}" target="_blank">{{ cc_title|replace('CCSUFFIX',cc_title_suffix) }}</a>{{ cc_d4 }}
+  {% else %}
+  <span>{{ cc_d5 }}{{ attr_props['name'] }}{{ cc_d6 }}<a class="license" rel="license" href="{{ cc_uri|replace('CCNAME',cc_name) }}" target="_blank">{{ cc_title }}</a>{{ cc_d7 }}<a xmlns:cc="http://creativecommons.org/ns#" href="{{ attr_props['authorurl'] if attr_props['authorurl'] else attr_props['url'] }}" property="cc:attributionName" rel="cc:attributionURL">{{ attr_props['name'] }}</a>{{ cc_d8 }}<a href="{{ attr_props['arturl'] if attr_props['arturl'] else attr_props['url'] }}">{{ cc_d9 }}</a>{{ cc_dx }}</span>
+  {% endif %}
 {% endmacro %}
+

@@ -1,21 +1,21 @@
 # Translations template for PROJECT.
-# Copyright (C) 2016 ORGANIZATION
+# Copyright (C) 2017 ORGANIZATION
 # This file is distributed under the same license as the PROJECT project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2016.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2017.
 #
 #, fuzzy
 msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2016-08-17 01:38+0900\n"
+"POT-Creation-Date: 2017-06-10 17:13+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 0.2\n"
+"Generated-By: Babel 2.3.4\n"
 
 #: templates/archives.html:2
 #, python-format
@@ -31,18 +31,17 @@ msgstr ""
 msgid "Archives for %(SITENAME)s"
 msgstr ""
 
-#: templates/article.html:78 templates/article.html:111
+#: templates/article.html:75 templates/article.html:120
 msgid "Table of Contents"
 msgstr ""
 
-#: templates/article.html:97
+#: templates/article.html:94
 #, python-format
 msgid "Permalink to %(title)s"
 msgstr ""
 
-#: templates/article.html:152
-#, python-format
-msgid "This is part %(index)s of the \"%(name)s\" series:"
+#: templates/article.html:111
+msgid "License"
 msgstr ""
 
 #: templates/author.html:3
@@ -55,16 +54,23 @@ msgstr ""
 msgid "Authors - %(SITENAME)s"
 msgstr ""
 
-#: templates/base.html:120
-msgid "Toggle navigation"
+#: templates/base.html:94 templates/includes/aboutme.html:9
+#, python-format
+msgid "About %(AUTHOR)s"
 msgstr ""
 
-#: templates/base.html:216 templates/base.html:226 templates/search.html:4
+#: templates/base.html:137 templates/base.html:138
+#: templates/includes/sidebar.html:10 templates/includes/sidebar.html:11
+#: templates/search.html:3
 msgid "Search"
 msgstr ""
 
-#: templates/base.html:233
+#: templates/base.html:147
 msgid "All"
+msgstr ""
+
+#: templates/base.html:148
+msgid "Atom feeds for all articles"
 msgstr ""
 
 #: templates/categories.html:2
@@ -72,7 +78,8 @@ msgstr ""
 msgid "Categories - %(SITENAME)s"
 msgstr ""
 
-#: templates/categories.html:8 templates/category.html:11
+#: templates/categories.html:8 templates/category.html:13
+#: templates/includes/sidebar.html:54
 msgid "Categories"
 msgstr ""
 
@@ -81,29 +88,85 @@ msgstr ""
 msgid "All Categories for %(SITENAME)s"
 msgstr ""
 
-#: templates/category.html:13
+#: templates/category.html:15
 #, python-format
 msgid "Feeds for category %(tag)s"
 msgstr ""
 
-#: templates/index.html:12
+#: templates/index.html:15
 msgid "All Articles"
 msgstr ""
 
-#: templates/index.html:13
-msgid "Atom feeds for all articles"
-msgstr ""
-
-#: templates/page.html:59 templates/includes/article_info.html:24
+#: templates/includes/article_info.html:15 templates/page.html:59
 msgid "Show source code of this page"
 msgstr ""
 
-#: templates/tag.html:11 templates/tags.html:8
-#: templates/includes/sidebar_tags.html:4
+#: templates/search.html:64
+msgid "'No title'"
+msgstr ""
+
+#: templates/search.html:65
+msgid "'Showing results for'"
+msgstr ""
+
+#: templates/search.html:66
+msgid "'Search instead for'"
+msgstr ""
+
+#: templates/search.html:67
+msgid "'1 result'"
+msgstr ""
+
+#: templates/search.html:68
+msgid "'results'"
+msgstr ""
+
+#: templates/search.html:69
+msgid "'Back'"
+msgstr ""
+
+#: templates/search.html:70
+msgid "'More'"
+msgstr ""
+
+#: templates/search.html:71
+msgid "'Nothing found.'"
+msgstr ""
+
+#: templates/search.html:72
+msgid "'Common words are largely ignored.'"
+msgstr ""
+
+#: templates/search.html:73
+msgid "'Search too short'"
+msgstr ""
+
+#: templates/search.html:74
+msgid "'Should be one character or more.'"
+msgstr ""
+
+#: templates/search.html:75
+msgid "'Should be'"
+msgstr ""
+
+#: templates/search.html:76
+msgid "'characters or more.'"
+msgstr ""
+
+#: templates/search.html:77
+msgid "'seconds'"
+msgstr ""
+
+#: templates/search.html:78
+msgid "'Searches related to'"
+msgstr ""
+
+#: templates/includes/sidebar_tags.html:7 templates/tag.html:13
+#: templates/tags.html:8
 msgid "Tags"
 msgstr ""
 
-#: templates/tag.html:13
+#: templates/tag.html:15
 #, python-format
 msgid "Feeds for tag %(tag)s"
 msgstr ""
@@ -118,60 +181,58 @@ msgstr ""
 msgid "Tags for %(SITENAME)s"
 msgstr ""
 
-#: templates/includes/aboutme.html:5
-#, python-format
-msgid "About %(AUTHOR)s"
-msgstr ""
-
-#: templates/includes/article_info.html:25
-msgid "Show pdf version of this page"
-msgstr ""
-
-#: templates/includes/article_info.html:26
-msgid "Show captured png of this page"
-msgstr ""
-
-#: templates/includes/comments.html:12 templates/includes/comments.html:76
+#: templates/includes/comments.html:12 templates/includes/comments.html:77
 msgid "comments"
 msgstr ""
 
-#: templates/includes/comments.html:19
+#: templates/includes/comments.html:20
 msgid "Leave a comment from "
 msgstr ""
 
-#: templates/includes/comments.html:19
+#: templates/includes/comments.html:20
 msgid " this post's issue page "
 msgstr ""
 
-#: templates/includes/comments.html:19
+#: templates/includes/comments.html:20
 msgid " using your Github account."
 msgstr ""
 
-#: templates/includes/comments.html:50
+#: templates/includes/comments.html:51
 msgid "left a comment on"
 msgstr ""
 
-#: templates/includes/footer.html:13
+#: templates/includes/footer.html:12
 msgid "Powered by"
 msgstr ""
 
-#: templates/includes/footer.html:14
+#: templates/includes/footer.html:13
 msgid "generator"
 msgstr ""
 
-#: templates/includes/github.html:4
+#: templates/includes/friends.html:9
+msgid "Friends"
+msgstr ""
+
+#: templates/includes/github.html:7
 msgid "GitHub Repos"
 msgstr ""
 
-#: templates/includes/links.html:3
+#: templates/includes/github.html:18
+#, python-format
+msgid ""
+"<a href=\"https://github.com/%(GITHUB_USER)s\">@%(GITHUB_USER)s</a> on "
+"GitHub"
+msgstr ""
+
+#: templates/includes/links.html:5
 msgid "Links"
 msgstr ""
 
-#: templates/includes/twitter_timeline.html:4
-msgid "Latest Tweets"
+#: templates/includes/promotion.html:7
+msgid "Promotions"
 msgstr ""
 
-#: templates/includes/weibo.html:4
-msgid "Latest Weibo"
+#: templates/includes/twitter_timeline.html:8
+msgid "Latest Tweets"
 msgstr ""
 

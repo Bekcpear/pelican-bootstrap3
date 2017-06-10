@@ -1,339 +1,310 @@
 <!DOCTYPE html>
-{% set sitelangname = dict(zh_HK='zh-Hant', zh_CN="zh-Hans", ja_JP='ja', en_US='en-us') %}
-<html lang="{% block html_lang %}{{ sitelangname[LOCALE[0].split('.')[0]] }}{% endblock %}"
-      {% if USE_OPEN_GRAPH %}
-      xmlns:og="http://ogp.me/ns#"
-      xmlns:fb="https://www.facebook.com/2008/fbml"{% endif %}>
+{% set sitelangname = dict(zh_CN='zh-Hans', zh_TW='zh-Hant', en_US='en-us') %}
+<html lang="{% block html_lang %}{{ sitelangname[LOCALE[0].split('.')[0]] }}{% endblock %}">
 <head>
-    <title>{% macro title() -%}
-    {% block title %}{{ SITENAME }}{% endblock %}
-    {%- endmacro %}{{title()}}</title>
-    <!-- Using the latest rendering mode for IE -->
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% macro title() -%}
+  {% block title %}{{ SITENAME }}{% endblock %}
+  {%- endmacro %}{{title()}}</title>
+  <!-- Using the latest rendering mode for IE -->
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    {% if 'liquid_tags.notebook' in PLUGINS %}
-        {% include 'includes/liquid_tags_nb_header.html' %}
+  <link rel="apple-touch-icon" sizes="57x57" href="{{ SITEURL }}/images/apple-touch-icon-57x57.png">
+  <link rel="apple-touch-icon" sizes="60x60" href="{{ SITEURL }}/images/apple-touch-icon-60x60.png">
+  <link rel="apple-touch-icon" sizes="72x72" href="{{ SITEURL }}/images/apple-touch-icon-72x72.png">
+  <link rel="apple-touch-icon" sizes="76x76" href="{{ SITEURL }}/images/apple-touch-icon-76x76.png">
+  <link rel="apple-touch-icon" sizes="114x114" href="{{ SITEURL }}/images/apple-touch-icon-114x114.png">
+  <link rel="apple-touch-icon" sizes="120x120" href="{{ SITEURL }}/images/apple-touch-icon-120x120.png">
+  <link rel="apple-touch-icon" sizes="144x144" href="{{ SITEURL }}/images/apple-touch-icon-144x144.png">
+  <link rel="apple-touch-icon" sizes="152x152" href="{{ SITEURL }}/images/apple-touch-icon-152x152.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/images/apple-touch-icon-180x180.png">
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/images/favicon-32x32.png" sizes="32x32">
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/images/android-chrome-192x192.png" sizes="192x192">
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/images/favicon-96x96.png" sizes="96x96">
+  <link rel="icon" type="image/png" href="{{ SITEURL }}/images/favicon-16x16.png" sizes="16x16">
+  <link rel="manifest" href="{{ SITEURL }}/images/manifest.json">
+  <link rel="mask-icon" href="{{ SITEURL }}/images/safari-pinned-tab.svg" color="#5bbad5">
+  <link rel="shortcut icon" href="{{ SITEURL }}/images/favicon.ico">
+  {# Favicons are a touchy subject. also can see: http://stackoverflow.com/a/23851464/872397 #}
+
+  <meta name="theme-color" content="#fdfdfd">
+  <meta name="msapplication-navbutton-color" content="#fdfdfd">
+  <meta name="apple-mobile-web-app-status-bar-style" content="#fdfdfd">
+
+  {% block canonical_rel %}{% endblock %}
+
+  {% block meta %}
+  <meta name="author" content="{{ AUTHOR }}" />
+  {% endblock %}
+
+  {# Open Graph tags #}
+  {% block opengraph %}
+  <!-- Open Graph tags -->
+    {% if OPEN_GRAPH_FB_APP_ID %}
+  <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
     {% endif %}
-
-    {# Favicons are a touchy subject. For reasoning for the following code, see: http://stackoverflow.com/a/23851464/872397 #}
-    {% if FAVICON %}
-    <link rel="shortcut icon" href="{{ SITEURL }}/favicon.ico" />
-    <link rel="icon" type="image/png" href="{{ SITEURL }}/images/avatar.jpg" />
+  <meta property="og:site_name" content="{{ SITENAME }}" />
+  <meta property="og:type" content="website"/>
+  <meta property="og:title" content="{{ SITENAME }}"/>
+  <meta property="og:url" content="{{ SITEURL }}"/>
+  <meta property="og:description" content="{{ SITENAME }}"/>
+    {% if OPEN_GRAPH_IMAGE %}
+  <meta property="og:image" content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
     {% endif %}
-    <meta name="theme-color" content="#6b5594">
-    <meta name="msapplication-navbutton-color" content="#6b5594">
-    <meta name="apple-mobile-web-app-status-bar-style" content="#6b5594">
-    <link rel="manifest" href="/manifest.json">
+  {% endblock %}
 
+  {# Twitter Cards tags #}
+  {% include 'includes/twitter_cards.html' %}
 
-<link rel="apple-touch-icon" sizes="180x180" href="{{ SITEURL }}/images/apple-touch-icon.png">
-<link rel="icon" type="image/png" href="{{ SITEURL }}/images/favicon-32x32.png" sizes="32x32">
-<link rel="icon" type="image/png" href="{{ SITEURL }}/images/favicon-16x16.png" sizes="16x16">
-<link rel="mask-icon" href="{{ SITEURL }}/images/safari-pinned-tab.svg" color="#603cba">
+  <!-- Bootstrap -->
+  {% if USE_LESS %}
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/bootstrap/bootstrap.less" rel="stylesheet/less" type="text/css">
+  {% else %}
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
+  {% endif %}
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
+  {% if DOCUTIL_CSS %}
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/html4css1.css" rel="stylesheet">
+  {% endif %}
+  {% if TYPOGRIFY %}
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet">
+  {% endif %}
+  <!-- <link href="{{ SITEURL }}/static/highlightjs/github-gist.css" rel="stylesheet"> -->
 
-    {% block canonical_rel %}{% endblock %}
-
-    {% block meta %}
-        <meta name="author" content="{{ AUTHOR }}" />
-    {% endblock %}
-
-    {# Open Graph tags #}
-    {% if USE_OPEN_GRAPH is not defined %}
-        {% set USE_OPEN_GRAPH = True %}
-    {% endif %}
-    {% if USE_OPEN_GRAPH %}
-    {% block opengraph %}
-    <!-- Open Graph tags -->
-        {% if OPEN_GRAPH_FB_APP_ID %}
-            <meta property="fb:app_id" content="{{ OPEN_GRAPH_FB_APP_ID }}"/>
-        {% endif %}
-        <meta property="og:site_name" content="{{ SITENAME }}" />
-        <meta property="og:type" content="website"/>
-        <meta property="og:title" content="{{ SITENAME }}"/>
-        <meta property="og:url" content="{{ SITEURL }}"/>
-        <meta property="og:description" content="{{ SITENAME }}"/>
-        {% if OPEN_GRAPH_IMAGE %}
-            <meta property="og:image"
-                  content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
-        {% endif %}
-    {% endblock %}
-    {% endif %}
-
-    {# Twitter Cards tags #}
-    {% include 'includes/twitter_cards.html' %}
-
-    {% if WEIBO_APPKEY %}
-    <meta property="wb:webmaster" content="a699edf35652cd85" />
-    {% endif %}
-
-    <!-- Bootstrap -->
-    {% if USE_LESS %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/bootstrap/bootstrap.less" rel="stylesheet/less" type="text/css">
-    {% else %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
-    {% endif %}
-
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/font-awesome.min.css" rel="stylesheet">
-
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
-    {% if 'tipue_search' in PLUGINS %}
-    <link href="{{ SITEURL}}/{{ THEME_STATIC_DIR }}/tipuesearch/tipuesearch.css" rel="stylesheet">
-    {% endif %}
-    {% if DOCUTIL_CSS %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/html4css1.css" rel="stylesheet">
-    {% endif %}
-    {% if TYPOGRIFY %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/typogrify.css" rel="stylesheet">
-    {% endif %}
-    <link rel="stylesheet" href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/style.css" type="text/css"/>
-    {% if CUSTOM_CSS %}
-        <link href="{{ SITEURL }}/{{ CUSTOM_CSS }}" rel="stylesheet">
-    {% endif %}
-
-    {% if FEED_ATOM %}
-        <link href="{{ SITEURL }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate"
-              title="{{ SITENAME }} ATOM Feed"/>
-    {% endif %}
-    {% if FEED_RSS %}
-        <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate"
-              title="{{ SITENAME }} RSS Feed"/>
-    {% endif %}
-
-    {% if USE_LESS %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/material/material.less" rel="stylesheet/less" type="text/css">
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/material/ripples.less" rel="stylesheet/less" type="text/css">
-    {% else %}
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/material.min.css" rel="stylesheet">
-        <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/ripples.css" rel="stylesheet">
-    {% endif %}
-    <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/github-markdown.css" rel="stylesheet">
+  {% if FEED_ATOM %}
+  <link href="{{ SITEURL }}/{{ FEED_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} ATOM Feed"/>
+  {% endif %}
+  {% if FEED_RSS %}
+  <link href="{{ SITEURL }}/{{ FEED_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} RSS Feed"/>
+  {% endif %}
+  {% if LOCALE[0].split('.')[0] != 'en_US' %}
+  <style>
+    p {
+      text-indent: 2em;
+    }
+  </style>
+  {% endif %}
 </head>
 <body>
-<div style="display:none" id="title">{{ title() }}</div>
-
-<div class="navbar {% if BOOTSTRAP_NAVBAR_INVERSE %}navbar-inverse{% else %}navbar-default{% endif %} navbar-fixed-top" role="navigation">
-    <div class="container">
-         <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
-                <span class="sr-only">{{ gettext('Toggle navigation') }}</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a href="{{ SITEURL }}/" class="navbar-brand">
-                {% if SITELOGO %}<img src="{{ SITEURL }}/{{ SITELOGO }}" width="{{ SITELOGO_SIZE }}"/> {% endif %}
-                {% if not HIDE_SITENAME %}{{ SITENAME }}{% endif %}
-            </a>
-        </div>
-        <div class="collapse navbar-collapse navbar-ex1-collapse">
-            <ul class="nav navbar-nav">
-                {% for title, link in MENUITEMS %}
-                    <li><a href="{{ link }}">{{ title }}</a></li>
-                {% endfor %}
-
-                {% if extra_siteurls %}
-                    {% set langname = dict(zh='繁體', zhs="简体", jp='日本語', en='English') %}
-                    <li class="dropdown hidden-lg hidden-xl">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-                            <i class="mdi-action-translate"></i><span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            {% for lang, url in lang_siteurls.items() %}
-                            <li{% if lang == DEFAULT_LANG %} class="active"{% endif %}><a href="{{ url }}/">{{ langname[lang] }}</a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-
-                    <ul class="nav navbar-nav hidden-xs hidden-md hidden-sm">
-                        {% for lang, url in lang_siteurls.items() %}
-                        <li{% if lang == DEFAULT_LANG %} class="active"{% endif %}><a href="{{ url }}/"><i class="mdi-action-translate"></i>{{ langname[lang] }}</a></li>
-                        {% endfor %}
-                    </ul>
-                {% endif %}
-
-                {% if DISPLAY_PAGES_ON_MENU %}
-                    <li class="dropdown hidden-md hidden-lg hidden-xl">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-                            <i class="fa fa-user"></i><span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                            {% for p in pages %}
-                             <li class="{% if p == page %} active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}"><i class="fa fa-user"></i>
-                                 {{ p.menulabel|default(p.title) }}
-                              </a></li>
-                            {% endfor %}
-                        </ul>
-                    </li>
-
-                  <ul class="nav navbar-nav hidden-xs hidden-sm">
-                    {% for p in pages %}
-                     <li class="{% if p == page %} active{% endif %}"><a href="{{ SITEURL }}/{{ p.url }}"><i class="fa fa-user"></i>
-                         {{ p.menulabel|default(p.title) }}
-                      </a></li>
-                    {% endfor %}
-                  </ul>
-                {% endif %}
-            </ul>
-
-                {% if DISPLAY_CATEGORIES_ON_MENU %}
-                <ul class="nav navbar-nav hidden-md hidden-lg hidden-xl">
-                    <li class="dropdown hidden-md hidden-lg hidden-xl">
-                        <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-                            <i class="fa fa-folder-o"></i><span class="caret"></span>
-                        </a>
-                        <ul class="dropdown-menu">
-                        {% for cat, null in categories %}
-                            <li {% if cat == category %}class="active"{% endif %}>
-                                <a href="{{ SITEURL }}/{{ cat.url }}"><i class="fa fa-folder-o"></i> {{ cat | capitalize }}</a>
-                            </li>
-                        {% endfor %}
-                        </ul>
-                    </li>
-                </ul>
-
-                    <ul class="nav navbar-nav hidden-xs hidden-sm">
-                    {% for cat, null in categories %}
-                        <li {% if cat == category %}class="active"{% endif %}>
-                            <a href="{{ SITEURL }}/{{ cat.url }}"><i class="fa fa-folder-o"></i> {{ cat | capitalize }}</a>
-                        </li>
-                    {% endfor %}
-                    </ul>
-
-                {% endif %}
-
-
-            {% if 'tipue_search' in PLUGINS %}
-            <ul class="nav navbar-nav navbar-right hidden-sm hidden-md hidden-lg hidden-xl">
-                <li class="dropdown hidden-md hidden-lg hidden-xl">
-                    <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
-                        <i class="fa fa-search"></i><span class="caret"></span>
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><span>
-                        <form class="navbar-search" action="/search.html">
-                          <input type="text" class="search-query form-control col-lg-16" placeholder="{% trans %}Search{% endtrans %}" name="q" id="tipue_search_input" required>
-                        </form></span>
-                      </li>
-                    </ul>
-                </li>
-            </ul>
-
-            <ul class="nav navbar-right navbar-form hidden-xs">
-              <li><span>
-                <form class="navbar-search" action="/search.html">
-                  <input type="text" class="search-query form-control col-lg-16" placeholder="{% trans %}Search{% endtrans %}" name="q" id="tipue_search_input" required>
-                </form></span>
-              </li>
-            </ul>
-            {% endif %}
-
-            <ul class="nav navbar-nav navbar-right hidden-xs">
-              <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fa fa-th-list"></i><span class="icon-label">{{ gettext('All') }}</span></a></li>
-              <li><a href="{{ SITEURL }}/{{ FEED_URL | default('feeds/atom.xml') }}" title="Atom feeds for all articles"><i class="fa fa-rss"></i></a></li>
-            </ul>
-        </div>
-        <!-- /.navbar-collapse -->
+  <div style="display:none" id="title">{{ title() }}</div>
+  <div class="navbar navbar-default" role="navigation" id="navbar"><!-- /.navbar start -->
+    <div class="navbar-header">
+      {% if AVATAR %}
+      <a href="{{ SITEURL }}/{% if ABOUT_PAGE %}{{ ABOUT_PAGE }}" title="{% trans %}About {{ AUTHOR }}{% endtrans %}"{% else %}"{% endif %} class="navbar-avatar">
+        <img src="{{ AVATAR }}" />
+      </a>
+      {% endif %}
+      {% if not HIDE_SITENAME %}
+      <a href="{{ SITEURL }}/" class="navbar-brand">
+        <span>{{ SITENAME }}</span>
+      </a>
+      {% endif %}
     </div>
-</div> <!-- /.navbar -->
-<!-- Banner -->
-{% if BANNER and BANNER_ALL_PAGES %}
-    {% include 'includes/banner.html' %}
-{% elif BANNER and not BANNER_ALL_PAGES %}
-    {% block banner %}{% endblock %}
-{% endif %}
-<!-- End Banner -->
-<div class="container" style="min-height: 100%;height: auto !important;height: 100%;">
-    <div class="row" style="padding-bottom:80px;padding-top:80px;">
-        <div class="col-xl-21 col-lg-20 col-md-18">
-            <div id="loading-block">
-            {% block breadcrumbs %}
-            {% endblock %}
-            {% block content %}
-            {% endblock %}
-            </div>
-<!-- Modal -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-          <a data-dismiss="modal" href="javascript:void(0);">
-            <img id="mimg" src="" style="width:100%;height:auto">
+    <div class="collapse navbar-collapse navbar-ex1-collapse"><!-- /.navbar-collapse start -->
+
+      <ul class="nav navbar-nav">
+        {% for title, link in MENUITEMS %}
+        <li><a href="{{ link }}">{{ title }}</a></li>
+        {% endfor %}
+      </ul>
+
+      {% if extra_siteurls %}
+        {% set langname = dict(zh='简体', zht='繁體', en='English') %}
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            <i class="fa fa-language"></i><span class="caret"></span>
           </a>
+          <ul class="dropdown-menu">
+            {% for lang, url in lang_siteurls.items() %}
+            <li{% if lang == DEFAULT_LANG %} class="active"{% endif %}><a href="{{ url }}/">{{ langname[lang] }}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+
+      {% if 'tipue_search' in PLUGINS %}
+      <ul class="nav navbar-nav navbar-right hidden-md hidden-lg hidden-xl">
+        <li class="dropdown hidden-md hidden-lg hidden-xl">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="javascript:void(0)">
+            <i class="fa fa-search"></i><span class="caret"></span>
+          </a>
+          <ul class="dropdown-menu list-inline">
+            <li><span>
+              <form class="search-form" action="{{ SITEURL }}/search.html">
+                <input type="search" id="tipue_search_input" class="search-query form-control" placeholder="{% trans %}Search{% endtrans %}" name="q" required>
+                <input type="submit" value="{% trans %}Search{% endtrans %}" class="submit" />
+              </form></span>
+            </li>
+          </ul>
+        </li>
+      </ul>
+      {% endif %}
+
+      <ul class="nav navbar-nav navbar-right hidden-xs">
+        <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fa fa-th-list"></i><span class="icon-label">{{ gettext('All') }}</span></a></li>
+        <li><a href="{{ SITEURL }}/{{ FEED_URL | default('feeds/atom.xml') }}" title="{% trans %}Atom feeds for all articles{% endtrans %}"><i class="fa fa-rss"></i></a></li>
+      </ul>
+    </div><!-- /.navbar-collapse end -->
+  </div><!-- /.navbar end -->
+
+  <!-- Banner -->
+  {% if BANNER and BANNER_ALL_PAGES %}
+    {% include 'includes/banner.html' %}
+  {% elif BANNER and not BANNER_ALL_PAGES %}
+    {% block banner %}{% endblock %}
+  {% endif %}
+  <!-- End Banner -->
+
+  <!-- container -->
+  <div class="container">
+    <div class="row">
+      <div class="col-xl-21 col-lg-20 col-md-18 right-align">
+        <div id="loading-block">
+          {% block breadcrumbs %}
+          {% endblock %}
+          {% block content %}
+          {% endblock %}
         </div>
-  </div><!-- /.modal-dialog -->
-</div><!-- /.modal -->
-        </div>
-        {% if not HIDE_SIDEBAR or ABOUT_ME %}
-        <div class="col-xl-3 col-lg-4 col-md-6" id="sidebar">
-            <aside>
-            {% if not HIDE_SIDEBAR %}
-                {% include 'includes/sidebar.html' %}
-            {% endif %}
-            {% block contentsidebar %}
-            {% endblock %}
-            </aside>
-        </div>
-        {% endif %}
+
+        <!-- Modal -->
+        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+          <div class="vertical-alignment-helper">
+            <div class="modal-dialog vertical-align-center">
+              <div class="modal-content">
+                <a data-dismiss="modal" href="javascript:void(0);">
+                  <img id="mimg" src="">
+                </a>
+              </div>
+            </div><!-- /.modal-dialog -->
+          </div>
+        </div><!-- /.modal -->
+      </div>
+
+      {% if not HIDE_SIDEBAR or ABOUT_ME %}
+      <div class="col-xl-3 col-lg-4 col-md-6 right-align" id="sidebar">
+        <aside>
+          {% if not HIDE_SIDEBAR %}
+            {% include 'includes/sidebar.html' %}
+          {% endif %}
+        </aside>
+        {% block toc %}
+        {% endblock %}
+      </div>
+      {% endif %}
     </div>
-</div>
+  </div>
+  <!-- End container -->
 
 
-{% include 'includes/footer.html' %}
+  {% include 'includes/footer.html' %}
 
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.slim.min.js"></script>
 
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
 
-<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/respond.min.js"></script>
+  {% include 'includes/github-js.html' %}
+  {% include 'includes/ga.html' %}
+  {% include 'includes/piwik.html' %}
 
-{% if BANNER %}
-    <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bodypadding.js"></script>
-{% endif %}
-{% include 'includes/github-js.html' %}
-{% include 'includes/disqus_script.html' %}
-{% include 'includes/ga.html' %}
-{% include 'includes/piwik.html' %}
-{% include 'includes/weibo-widget.html' %}
+  {% block scripts %}{% endblock %}
 
-{% block scripts %}{% endblock %}
-{% if USE_LESS %}
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/less.min.js" type="text/javascript"></script>
-{% endif %}
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/ripples.min.js"></script>
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/material.min.js"></script>
-<script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/jquery.bootstrap-autohidingnavbar.min.js"></script>
-<script>
+  {% if USE_LESS %}
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/less.min.js" type="text/javascript"></script>
+  {% endif %}
+  <!-- <script src="{{ SITEURL }}/static/highlightjs/highlight.pack.js" type="text/javascript"></script> -->
+  <script id="dsq-count-scr" src="//iume.disqus.com/count.js" async></script>
+  <script>
     $(document).ready(function() {
-        $.material.init();
-        $("div.navbar").autoHidingNavbar();
-        $(".img-responsive").css("cursor","pointer").on('click',function(){
-            var sr=$(this).attr('src');
-            $('#mimg').attr('src',sr);
-            $('#myModal').modal('show');
-        });
-        $('#affix-toc').affix({
-          offset: {
-            top: function(){
-                if($('#affix-toc').hasClass("affix"))
-                    return $('#sidebar').height();
-                return $('#sidebar').height() - $('#affix-toc').height();
-            },
-            bottom: function (){
-                return $("#fcfooter").offset().top -
-                    $("#article-content").offset().top -
-                    $("#article-content").height() + 20;
+      {% if BANNER %}
+      $('body').css('padding-top', $('.navbar').height()+'px');
+      {% endif %}
+      $('#affix-toc').width($('#sidebar aside').width());
+      $(".img-responsive").css("cursor","pointer").on('click',function(){
+        var sr=$(this).attr('src');
+        $('#mimg').attr('src',sr);
+        $('#myModal').modal('show');
+      });
+      $('a.panel-heading').on('mouseenter',function(){$(this).parent().css('box-shadow','0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)');});
+      $('div.panel-heading-widget').on('mouseenter',function(){$(this).parent().css('box-shadow','0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)');});
+      $('a.panel-heading').on('mouseleave',function(){$(this).parent().css('box-shadow','');});
+      $('div.panel-heading-widget').on('mouseleave',function(){$(this).parent().css('box-shadow','');});
+      $('#sidebar .search-form .submit').css('opacity', '0');
+      $('#sidebar .search-query').on('input', function(){
+        if($('#sidebar .search-query').val() != "") {
+          $('#sidebar .search-form .submit').css('opacity', '');
+        } else {
+          $('#sidebar .search-form .submit').css('opacity', '0');
+        }
+      });
+      $(document).on('scroll', function(){
+        var bst = document.getElementsByTagName('body')[0].scrollTop;
+        if(bst > 300){
+          $('#jtop').css('opacity', '0.5');
+        }else{
+          $('#jtop').css('opacity', '');
+        }
+      });
+      $('#affix-toc').affix({
+        offset: {
+          top: function(){
+            var top0 = $('#sidebar aside').height() + $('#sidebar aside').offset().top - $('#navbar').height();
+            var top1 = $('#article-toc').height() + $('#article-toc').offset().top;
+            if(top1 > top0) {
+              var marginb =  $('#article-toc').height() + $('#article-toc').offset().top - $('#sidebar aside').height();
+              $('#sidebar aside').css('margin-bottom', marginb + 'px');
+              return top1;
             }
+            $('#sidebar aside').css('margin-bottom', '');
+            return top0;
+          },
+          bottom: function (){
+            return $("footer").offset().top -
+              $("#article-content").offset().top -
+              $("#article-content").height() + 20;
           }
-        });
-        $('#affix-toc').width($('#sidebar').width());
+        }
+      });
+      var count = 0;
+      var sleep = 1000;
+      function udCommentC() {
+        for (var i = 0; i < $('.disqus-comment-count').length; ++i) {
+          if ($('.disqus-comment-count')[i].innerText == ""
+              || $('.disqus-comment-count')[i].innerText == "0"
+              || $('.disqus-comment-count')[i].innerText == "0 Comment") {
+            $('.disqus-comment-count')[i].parentNode.style.display = "none"
+          } else {
+            $('.disqus-comment-count')[i].parentNode.style.display = ""
+          }
+        }
+        count++;
+        if (count == 9) sleep = 5000;
+        else if (count == 43) sleep = 60000;
+        window.setTimeout(udCommentC,sleep);
+      }
+      udCommentC();
+      /*
+      hljs.configure({useBR: false});
+
+      $('pre.literal-block').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
+      */
     });
     $(window).resize(function () {
-       $('#affix-toc').width($('#sidebar').width());
+      $('#affix-toc').width($('#sidebar').width());
     });
-</script>
 
+/* Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) */
+/*! matchMedia() polyfill - Test a CSS media type/query in JS. Authors & copyright (c) 2012: Scott Jehl, Paul Irish, Nicholas Zakas. Dual MIT/BSD license */
+/*! NOTE: If you're already including a window.matchMedia polyfill via Modernizr or otherwise, you don't need this part */
+window.matchMedia=window.matchMedia||function(a){"use strict";var c,d=a.documentElement,e=d.firstElementChild||d.firstChild,f=a.createElement("body"),g=a.createElement("div");return g.id="mq-test-1",g.style.cssText="position:absolute;top:-100em",f.style.background="none",f.appendChild(g),function(a){return g.innerHTML='&shy;<style media="'+a+'"> #mq-test-1 { width: 42px; }</style>',d.insertBefore(f,e),c=42===g.offsetWidth,d.removeChild(f),{matches:c,media:a}}}(document);
+
+/*! Respond.js v1.1.0: min/max-width media query polyfill. (c) Scott Jehl. MIT/GPLv2 Lic. j.mp/respondjs  */
+(function(a){"use strict";function x(){u(!0)}var b={};if(a.respond=b,b.update=function(){},b.mediaQueriesSupported=a.matchMedia&&a.matchMedia("only all").matches,!b.mediaQueriesSupported){var q,r,t,c=a.document,d=c.documentElement,e=[],f=[],g=[],h={},i=30,j=c.getElementsByTagName("head")[0]||d,k=c.getElementsByTagName("base")[0],l=j.getElementsByTagName("link"),m=[],n=function(){for(var b=0;l.length>b;b++){var c=l[b],d=c.href,e=c.media,f=c.rel&&"stylesheet"===c.rel.toLowerCase();d&&f&&!h[d]&&(c.styleSheet&&c.styleSheet.rawCssText?(p(c.styleSheet.rawCssText,d,e),h[d]=!0):(!/^([a-zA-Z:]*\/\/)/.test(d)&&!k||d.replace(RegExp.$1,"").split("/")[0]===a.location.host)&&m.push({href:d,media:e}))}o()},o=function(){if(m.length){var b=m.shift();v(b.href,function(c){p(c,b.href,b.media),h[b.href]=!0,a.setTimeout(function(){o()},0)})}},p=function(a,b,c){var d=a.match(/@media[^\{]+\{([^\{\}]*\{[^\}\{]*\})+/gi),g=d&&d.length||0;b=b.substring(0,b.lastIndexOf("/"));var h=function(a){return a.replace(/(url\()['"]?([^\/\)'"][^:\)'"]+)['"]?(\))/g,"$1"+b+"$2$3")},i=!g&&c;b.length&&(b+="/"),i&&(g=1);for(var j=0;g>j;j++){var k,l,m,n;i?(k=c,f.push(h(a))):(k=d[j].match(/@media *([^\{]+)\{([\S\s]+?)$/)&&RegExp.$1,f.push(RegExp.$2&&h(RegExp.$2))),m=k.split(","),n=m.length;for(var o=0;n>o;o++)l=m[o],e.push({media:l.split("(")[0].match(/(only\s+)?([a-zA-Z]+)\s?/)&&RegExp.$2||"all",rules:f.length-1,hasquery:l.indexOf("(")>-1,minw:l.match(/\(\s*min\-width\s*:\s*(\s*[0-9\.]+)(px|em)\s*\)/)&&parseFloat(RegExp.$1)+(RegExp.$2||""),maxw:l.match(/\(\s*max\-width\s*:\s*(\s*[0-9\.]+)(px|em)\s*\)/)&&parseFloat(RegExp.$1)+(RegExp.$2||"")})}u()},s=function(){var a,b=c.createElement("div"),e=c.body,f=!1;return b.style.cssText="position:absolute;font-size:1em;width:1em",e||(e=f=c.createElement("body"),e.style.background="none"),e.appendChild(b),d.insertBefore(e,d.firstChild),a=b.offsetWidth,f?d.removeChild(e):e.removeChild(b),a=t=parseFloat(a)},u=function(b){var h="clientWidth",k=d[h],m="CSS1Compat"===c.compatMode&&k||c.body[h]||k,n={},o=l[l.length-1],p=(new Date).getTime();if(b&&q&&i>p-q)return a.clearTimeout(r),r=a.setTimeout(u,i),void 0;q=p;for(var v in e)if(e.hasOwnProperty(v)){var w=e[v],x=w.minw,y=w.maxw,z=null===x,A=null===y,B="em";x&&(x=parseFloat(x)*(x.indexOf(B)>-1?t||s():1)),y&&(y=parseFloat(y)*(y.indexOf(B)>-1?t||s():1)),w.hasquery&&(z&&A||!(z||m>=x)||!(A||y>=m))||(n[w.media]||(n[w.media]=[]),n[w.media].push(f[w.rules]))}for(var C in g)g.hasOwnProperty(C)&&g[C]&&g[C].parentNode===j&&j.removeChild(g[C]);for(var D in n)if(n.hasOwnProperty(D)){var E=c.createElement("style"),F=n[D].join("\n");E.type="text/css",E.media=D,j.insertBefore(E,o.nextSibling),E.styleSheet?E.styleSheet.cssText=F:E.appendChild(c.createTextNode(F)),g.push(E)}},v=function(a,b){var c=w();c&&(c.open("GET",a,!0),c.onreadystatechange=function(){4!==c.readyState||200!==c.status&&304!==c.status||b(c.responseText)},4!==c.readyState&&c.send(null))},w=function(){var b=!1;try{b=new a.XMLHttpRequest}catch(c){b=new a.ActiveXObject("Microsoft.XMLHTTP")}return function(){return b}}();n(),b.update=n,a.addEventListener?a.addEventListener("resize",x,!1):a.attachEvent&&a.attachEvent("onresize",x)}})(this);
+  </script>
 </body>
 </html>

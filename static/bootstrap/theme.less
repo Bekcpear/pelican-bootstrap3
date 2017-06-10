@@ -1,272 +1,680 @@
 
-//
-// Load core variables and mixins
-// --------------------------------------------------
+// custom theme
 
-@import "variables.less";
-@import "mixins.less";
+::-moz-selection {
+  background-color: #ffcc80;
+}
 
+::selection {
+  background-color: #ffcc80;
+}
 
-//
-// Buttons
-// --------------------------------------------------
+.highlight pre span.code-line:before::selection {
+  background-color: transparent;
+}
 
-// Common styles
-.btn-default,
-.btn-primary,
-.btn-success,
-.btn-info,
-.btn-warning,
-.btn-danger {
-  text-shadow: 0 -1px 0 rgba(0,0,0,.2);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 1px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
+img, table {
+  max-width: 100%;
+}
 
-  // Reset the shadow
-  &:active,
-  &.active {
-    .box-shadow(inset 0 3px 5px rgba(0,0,0,.125));
+div#loading-block > section#tags,
+div#loading-block > section#categories,
+div#loading-block > section#content.well,
+.article-item > article.panel,
+article > header.page-header,
+article > div.entry-content {
+  margin: 0 10px 20px 10px;
+  padding: 20px;
+  word-break: break-word;
+  background-color: @navbar-default-bg;
+  border-radius: @border-radius-base;
+  -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+  .panel {
+    margin-left: 10px;
+    float: right;
+    //border: 1px solid rgba(0,0,0,.3);
+    background-color: #fff;
+    border-radius: @border-radius-base;
+    .box-shadow(~"0 0 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)");
   }
-
-  .badge {
-    text-shadow: none;
-  }
-}
-
-// Mixin for generating new styles
-.btn-styles(@btn-color: #555) {
-  #gradient > .vertical(@start-color: @btn-color; @end-color: darken(@btn-color, 12%));
-  .reset-filter(); // Disable gradients for IE9 because filter bleeds through rounded corners
-  background-repeat: repeat-x;
-  border-color: darken(@btn-color, 14%);
-
-  &:hover,
-  &:focus  {
-    background-color: darken(@btn-color, 12%);
-    background-position: 0 -15px;
-  }
-
-  &:active,
-  &.active {
-    background-color: darken(@btn-color, 12%);
-    border-color: darken(@btn-color, 14%);
-  }
-
-  &:disabled,
-  &[disabled] {
-    background-color: darken(@btn-color, 12%);
-    background-image: none;
-  }
-}
-
-// Common styles
-.btn {
-  // Remove the gradient for the pressed/active state
-  &:active,
-  &.active {
-    background-image: none;
-  }
-}
-
-// Apply the mixin to the buttons
-.btn-default { .btn-styles(@btn-default-bg); text-shadow: 0 1px 0 #fff; border-color: #ccc; }
-.btn-primary { .btn-styles(@btn-primary-bg); }
-.btn-success { .btn-styles(@btn-success-bg); }
-.btn-info    { .btn-styles(@btn-info-bg); }
-.btn-warning { .btn-styles(@btn-warning-bg); }
-.btn-danger  { .btn-styles(@btn-danger-bg); }
-
-
-//
-// Images
-// --------------------------------------------------
-
-.thumbnail,
-.img-thumbnail {
-  .box-shadow(0 1px 2px rgba(0,0,0,.075));
-}
-
-
-//
-// Dropdowns
-// --------------------------------------------------
-
-.dropdown-menu > li > a:hover,
-.dropdown-menu > li > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-hover-bg; @end-color: darken(@dropdown-link-hover-bg, 5%));
-  background-color: darken(@dropdown-link-hover-bg, 5%);
-}
-.dropdown-menu > .active > a,
-.dropdown-menu > .active > a:hover,
-.dropdown-menu > .active > a:focus {
-  #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
-  background-color: darken(@dropdown-link-active-bg, 5%);
-}
-
-
-//
-// Navbar
-// --------------------------------------------------
-
-// Default navbar
-.navbar-default {
-  #gradient > .vertical(@start-color: lighten(@navbar-default-bg, 10%); @end-color: @navbar-default-bg);
-  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
-  border-radius: @navbar-border-radius;
-  @shadow: inset 0 1px 0 rgba(255,255,255,.15), 0 1px 5px rgba(0,0,0,.075);
-  .box-shadow(@shadow);
-
-  .navbar-nav > .open > a,
-  .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: darken(@navbar-default-link-active-bg, 5%); @end-color: darken(@navbar-default-link-active-bg, 2%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.075));
-  }
-}
-.navbar-brand,
-.navbar-nav > li > a {
-  text-shadow: 0 1px 0 rgba(255,255,255,.25);
-}
-
-// Inverted navbar
-.navbar-inverse {
-  #gradient > .vertical(@start-color: lighten(@navbar-inverse-bg, 10%); @end-color: @navbar-inverse-bg);
-  .reset-filter(); // Remove gradient in IE<10 to fix bug where dropdowns don't get triggered
-
-  .navbar-nav > .open > a,
-  .navbar-nav > .active > a {
-    #gradient > .vertical(@start-color: @navbar-inverse-link-active-bg; @end-color: lighten(@navbar-inverse-link-active-bg, 2.5%));
-    .box-shadow(inset 0 3px 9px rgba(0,0,0,.25));
-  }
-
-  .navbar-brand,
-  .navbar-nav > li > a {
-    text-shadow: 0 -1px 0 rgba(0,0,0,.25);
-  }
-}
-
-// Undo rounded corners in static and fixed navbars
-.navbar-static-top,
-.navbar-fixed-top,
-.navbar-fixed-bottom {
-  border-radius: 0;
-}
-
-// Fix active state of dropdown items in collapsed mode
-@media (max-width: @grid-float-breakpoint-max) {
-  .navbar .navbar-nav .open .dropdown-menu > .active > a {
-    &,
+  a {
     &:hover,
     &:focus {
-      color: #fff;
-      #gradient > .vertical(@start-color: @dropdown-link-active-bg; @end-color: darken(@dropdown-link-active-bg, 5%));
+      text-decoration: none;
+    }
+  }
+  h1,h2,h3,h4,h5,h6 {
+    a {
+      border: 0;
+    }
+  }
+  img,
+  table {
+    border: 0;
+    display: inline-block;
+    word-break: normal;
+    overflow-x: auto;
+    overflow-y: visible;
+    &.footnote > tbody > tr {
+      > th,
+      > td {
+        text-align: left;
+      }
     }
   }
 }
 
-
-//
-// Alerts
-// --------------------------------------------------
-
-// Common styles
-.alert {
-  text-shadow: 0 1px 0 rgba(255,255,255,.2);
-  @shadow: inset 0 1px 0 rgba(255,255,255,.25), 0 1px 2px rgba(0,0,0,.05);
-  .box-shadow(@shadow);
-}
-
-// Mixin for generating new styles
-.alert-styles(@color) {
-  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 7.5%));
-  border-color: darken(@color, 15%);
-}
-
-// Apply the mixin to the alerts
-.alert-success    { .alert-styles(@alert-success-bg); }
-.alert-info       { .alert-styles(@alert-info-bg); }
-.alert-warning    { .alert-styles(@alert-warning-bg); }
-.alert-danger     { .alert-styles(@alert-danger-bg); }
-
-
-//
-// Progress bars
-// --------------------------------------------------
-
-// Give the progress background some depth
-.progress {
-  #gradient > .vertical(@start-color: darken(@progress-bg, 4%); @end-color: @progress-bg)
-}
-
-// Mixin for generating new styles
-.progress-bar-styles(@color) {
-  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 10%));
-}
-
-// Apply the mixin to the progress bars
-.progress-bar            { .progress-bar-styles(@progress-bar-bg); }
-.progress-bar-success    { .progress-bar-styles(@progress-bar-success-bg); }
-.progress-bar-info       { .progress-bar-styles(@progress-bar-info-bg); }
-.progress-bar-warning    { .progress-bar-styles(@progress-bar-warning-bg); }
-.progress-bar-danger     { .progress-bar-styles(@progress-bar-danger-bg); }
-
-// Reset the striped class because our mixins don't do multiple gradients and
-// the above custom styles override the new `.progress-bar-striped` in v3.2.0.
-.progress-bar-striped {
-  #gradient > .striped();
-}
-
-
-//
-// List groups
-// --------------------------------------------------
-
-.list-group {
-  border-radius: @border-radius-base;
-  .box-shadow(0 1px 2px rgba(0,0,0,.075));
-}
-.list-group-item.active,
-.list-group-item.active:hover,
-.list-group-item.active:focus {
-  text-shadow: 0 -1px 0 darken(@list-group-active-bg, 10%);
-  #gradient > .vertical(@start-color: @list-group-active-bg; @end-color: darken(@list-group-active-bg, 7.5%));
-  border-color: darken(@list-group-active-border, 7.5%);
-
-  .badge {
-    text-shadow: none;
+@media (max-width: @screen-xs-max) {
+  div#loading-block > section#tags,
+  div#loading-block > section#categories,
+  div#loading-block > section#content,
+  .article-item > article.panel,
+  article > header.page-header,
+  article > div.entry-content {
+    margin: 0 0 20px 0;
+    .post-info > div {
+      font-size: 10px;
+    }
   }
 }
 
-
-//
-// Panels
-// --------------------------------------------------
-
-// Common styles
-.panel {
-  .box-shadow(0 1px 2px rgba(0,0,0,.05));
+article > header.page-header {
+  background-color: @brand-primary;
+  color: rgba(255,255,255,.9);
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+  h1 {
+    color: rgba(255,255,255,.9);
+  }
+  .fa {
+    opacity: 0.8;
+  }
+  .panel-heading {
+    border-bottom: 0.5px solid rgba(255,255,255,.12);
+  }
+  .panel-body {
+    padding-top: 10px;
+  }
+  li {
+    list-style: none;
+  }
+  .caret {
+    color: #fff;
+  }
+  .btn:active {
+    .box-shadow(~"none");
+  }
+  .btn-primary {
+    background-color: transparent;
+    border: 0;
+  }
+  .post-info > div {
+    &:extend(.clearfix all);
+    text-align: right;
+    float: right;
+    padding-left: 5px;
+    width: ~"calc(50% - 5px)";
+    > span {
+      display: block;
+    }
+    > div.control {
+      margin-top: 10px;
+      > ul,
+      > span {
+        display: inline-block;
+        margin-bottom: 0;
+      }
+    }
+  }
+  .taglist {
+    &:extend(.clearfix all);
+    display: block;
+    padding: 10px 5px 10px 10px;
+    float: left;
+    width: ~"calc(50% - 15px)";
+    a {
+      display: inline-block;
+      color: rgba(255,255,255,.9);
+      margin-right: 8px;
+      border-bottom: 0.5px dotted transparent;
+      &:hover,
+      &:focus {
+        border-bottom: 0.5px dotted rgba(255,255,255,.9);
+      }
+    }
+  }
+}
+article > div.entry-content {
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
 }
 
-// Mixin for generating new styles
-.panel-heading-styles(@color) {
-  #gradient > .vertical(@start-color: @color; @end-color: darken(@color, 5%));
+article .entry-content,
+.atricle-item .panel-body {
+  a {
+    border-bottom: 0.5px dotted;
+    &:hover,
+    &:focus {
+      border-bottom-style: solid;
+    }
+  }
 }
 
-// Apply the mixin to the panel headings only
-.panel-default > .panel-heading   { .panel-heading-styles(@panel-default-heading-bg); }
-.panel-primary > .panel-heading   { .panel-heading-styles(@panel-primary-heading-bg); }
-.panel-success > .panel-heading   { .panel-heading-styles(@panel-success-heading-bg); }
-.panel-info > .panel-heading      { .panel-heading-styles(@panel-info-heading-bg); }
-.panel-warning > .panel-heading   { .panel-heading-styles(@panel-warning-heading-bg); }
-.panel-danger > .panel-heading    { .panel-heading-styles(@panel-danger-heading-bg); }
+div#loading-block > section#tags,
+div#loading-block > section#categories {
+  .panel {
+    float: none;
+    .panel-body a {
+      border-bottom: 1px dotted;
+      &:hover,
+      &:focus {
+        border-bottom: 1px solid;
+      }
+    }
+  }
+}
 
+div#loading-block > section#content div#archives > p > a {
+  border-bottom: 1px dotted;
+  &:hover,
+  &:focus {
+    border-bottom: 1px solid;
+  }
+}
 
-//
-// Wells
-// --------------------------------------------------
+article .license-desc {
+  position: relative;
+  text-align: right;
+  margin: 0 10px;
+  padding: 0 10px 10px 10px;
+  #license-desc {
+    text-align: left;
+    width: ~"calc(100% - 80px)";
+    font-size: 80%;
+  }
+  > a {
+    display: inline-block;
+    position: absolute;
+    bottom: 0;
+    right: 10px;
+    padding: 2px 5px;
+    color: #fff;
+    font-size: 90%;
+    background-color: @brand-primary;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+    cursor: pointer;
+    &:hover,
+    &:focus {
+      text-decoration: none;
+    }
+  }
+}
 
-.well {
-  #gradient > .vertical(@start-color: darken(@well-bg, 5%); @end-color: @well-bg);
-  border-color: darken(@well-bg, 10%);
-  @shadow: inset 0 1px 3px rgba(0,0,0,.05), 0 1px 0 rgba(255,255,255,.1);
-  .box-shadow(@shadow);
+table .label {
+  display: table-cell;
+  color: initial;
+}
+
+.article-item > article.panel {
+  position: relative;
+  padding: 0;
+  .panel-body,
+  .panel-heading {
+    z-index: 10;
+    display: block;
+    padding: 20px;
+  }
+  a.panel-heading {
+    position: relative;
+    color: #fff;
+    background-color: @brand-primary;
+    border-top-left-radius: @border-radius-base;
+    border-top-right-radius: @border-radius-base;
+    &:hover,
+    &:focus {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+  div.panel-heading-widget {
+    position: absolute;
+    right:0;
+    top: 20px;
+    min-height: 50px;
+    z-index: 11;
+    .fa-language + .caret {
+      color: #fff;
+    }
+  }
+}
+
+.trans-in-panel .dropdown-toggle,
+.btn-with-icon-in-panel {
+  opacity: 0.7;
+  &:focus,
+  &:hover {
+    opacity: 1;
+  }
+}
+.trans-in-panel {
+  .dropdown-menu {
+    background-color: @brand-primary;
+    > li > a {
+      color: #fff;
+      &:hover,
+      &:focus {
+        background-color: @brand-primary-light;
+      }
+    }
+  }
+}
+
+article > header.page-header {
+}
+
+article > div.entry-content {
+}
+
+.panel-body {
+  padding: 0 15px;
+  .toc ul,
+  .toc li {
+    padding-left: 10px;
+    list-style: none;
+  }
+
+  .toc > ul,
+  .toc > ul > li {
+    padding-left: 0;
+  }
+}
+
+#sidebar,
+footer {
+  a {
+    color: @text-color;
+  }
+}
+
+.jumbotron .article-item {
+  .panel-heading,
+  .panel-body {
+    h2,h3 {
+      margin-top: @line-height-computed;
+      margin-bottom: (@line-height-computed / 2);
+    }
+    h4,h5,h6 {
+      margin-top: (@line-height-computed / 2);
+      margin-bottom: (@line-height-computed / 2);
+    }
+  }
+}
+
+#sidebar .sidebar-item {
+  #gh_repos .list-group-item-text {
+    color: @gray-light;
+  }
+}
+
+.breadcrumb a {
+  color: #616161;
+}
+
+a.external {
+  &:after {
+    content: '';
+    display: inline-block;
+    margin-left: 2px;
+    width: 10px;
+    height: 10px;
+    opacity: 0.6;
+    font-size: 75%;
+    line-height: 0;
+    position: relative;
+    top: -0.5em;
+    vertical-align: baseline;
+    background-image: url(../images/fa/external-link.svg);
+    background-size: cover;
+  }
+}
+
+a.footnote-reference {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  top: -0.5em;
+  vertical-align: baseline;
+}
+
+.breadcrumb {
+}
+
+#sidebar {
+  .form-control {
+    color: #000;
+  }
+  .row-content .list-group-item-text {
+  }
+  aside {
+    margin-bottom: @navbar-margin-bottom;
+    > section > ul {
+      margin-bottom: 30px;
+    }
+  }
+}
+
+.search-form {
+  position: relative;
+  min-width: 200px;
+  input.form-control {
+    padding: 6px 34px 6px 12px;
+  }
+  input.submit {
+    opacity: 0.4;
+    position: absolute;
+    top: 6px;
+    color: transparent;
+    right: 12px;
+    width: 18px;
+    height: 18px;
+    overflow: hidden;
+    background-color: transparent;
+    background-image: url(../images/enter.svg);
+    background-size: cover;
+    border: 0;
+    outline: none;
+    transition-property: opacity;
+    transition-duration: 0.3s;
+  }
+}
+
+#affix-toc {
+  transition-property: opacity;
+  transition-duration: 0.8s;
+  border-radius: @border-radius-base;
+  background-color: #fff;
+  z-index: 10;
+  max-height: ~"calc(100% - 120px)";
+  overflow: auto;
+  .box-shadow(~"0 0px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)");
+  a {
+    color: @text-color;
+    border-bottom: 0.5px dotted;
+    &:hover,
+    &:focus {
+      color: @text-color;
+      text-decoration: none;
+      border-bottom-style: solid;
+    }
+  }
+}
+
+div.affix-top {
+  opacity: 0;
+}
+
+div.affix {
+  opacity: 1;
+}
+
+.highlight pre {
+  counter-reset: linecounter;
+  span.code-line {
+    counter-increment: linecounter;
+    padding-left: 1em;
+    text-indent: -1em;
+    display: inline-block;
+  }
+}
+
+.highlight pre span.code-line:before {
+  content: counter(linecounter);
+  padding-right: 1em;
+  display: inline-block;
+  width: 3em;
+  color: rgba(27,31,35,0.3);
+  text-align: right;
+}
+
+#prevnext {
+  padding-left: (@grid-gutter-width / 2);
+  padding-right: (@grid-gutter-width / 2);
+  > div + div {
+    text-align: right;
+  }
+}
+
+input.search-query {
+  border: 0;
+  border-radius: 0;
+  border-bottom: 1px solid rgba(0,0,0,.3);
+}
+
+ul.tagcloud > li {
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.modal {
+  background: rgba(0, 0, 0, 0.4);
+  .vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+  }
+  .vertical-align-center {
+    /* To center vertically */
+    width: 100%;
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+  }
+  .modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:inherit;
+    height:inherit;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+    a {
+      display: block;
+      margin: 0 auto;
+      img {
+        display: block;
+        margin: 0 auto;
+      }
+    }
+  }
+}
+
+section#comments.comments {
+  > div > div > div#disqus-comments {
+    padding: 20px;
+    word-break: break-word;
+    background-color: @navbar-default-bg;
+    border-radius: @border-radius-base;
+    -webkit-box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  }
+  .panel .panel-heading a span {
+    color: @text-color;
+    font-size: @font-size-base;
+    position: relative;
+    vertical-align: middle;
+  }
+}
+
+#jtop {
+  position: fixed;
+  bottom: 50px;
+  left: 50px;
+  display: block;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: #f2f2f2;
+  background-image: url(../images/fa/angle-up.svg);
+  background-size: 40px;
+  background-repeat: no-repeat;
+  background-position-x: center;
+  background-position-y: 2px;
+  opacity: 0;
+  transition-property: opacity;
+  transition-duration: 0.5s;
+  .box-shadow(~"0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24)");
+}
+
+footer {
+  border-top: .5px solid rgba(0,0,0,0.1);
+  padding-top: 10px;
+  text-align: center;
+  a.license {
+    font-size: 90%;
+    vertical-align: baseline;
+    margin: 0 2px;
+  }
+}
+
+.fa {
+  position: relative;
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  background-color: transparent;
+  background-image: none;
+  background-size: cover;
+  vertical-align: sub;
+}
+
+.row-action-primary .fa {
+  top: -4px;
+}
+
+.fa + .icon-label {
+  margin-left: 5px;
+}
+.fa + .icon-label-left {
+  margin-right: 5px;
+}
+
+.fa-lg {
+  width: 26px;
+  height: 26px;
+}
+
+.fa-invert {
+  filter: invert(1);
+}
+
+.fa-twitter {
+  background-image: url(../images/fa/twitter.svg);
+}
+.fa-github {
+  background-image: url(../images/fa/github.svg);
+}
+.fa-external-link-square {
+  background-image: url(../images/fa/external-link-square.svg);
+}
+.fa-usd {
+  background-image: url(../images/fa/usd.svg);
+}
+.fa-calendar {
+  background-image: url(../images/fa/calendar.svg);
+}
+.fa-user {
+  background-image: url(../images/fa/user.svg);
+}
+.fa-user-o {
+  background-image: url(../images/fa/user-o.svg);
+}
+.fa-heart-o {
+  background-image: url(../images/fa/heart-o.svg);
+}
+.fa-comments-o {
+  background-image: url(../images/fa/comments-o.svg);
+}
+.fa-code {
+  background-image: url(../images/fa/code.svg);
+}
+.fa-code-fork {
+  background-image: url(../images/fa/code-fork.svg);
+}
+.fa-file-code-o {
+  background-image: url(../images/fa/file-code-o.svg);
+}
+.fa-file-pdf-o {
+  background-image: url(../images/fa/file-pdf-o.svg);
+}
+.fa-file-photo-o {
+  background-image: url(../images/fa/file-photo-o.svg);
+}
+.fa-tag {
+  background-image: url(../images/fa/tag.svg);
+}
+.fa-tags {
+  background-image: url(../images/fa/tags.svg);
+}
+.fa-home {
+  background-image: url(../images/fa/home.svg);
+}
+.fa-folder-open {
+  background-image: url(../images/fa/folder-open.svg);
+}
+.fa-folder-open-o {
+  background-image: url(../images/fa/folder-open-o.svg);
+}
+.fa-rss {
+  background-image: url(../images/fa/rss.svg);
+}
+.fa-th-list {
+  background-image: url(../images/fa/th-list.svg);
+}
+.fa-arrow-left {
+  background-image: url(../images/fa/arrow-left.svg);
+}
+.fa-arrow-right {
+  background-image: url(../images/fa/arrow-right.svg);
+}
+.fa-angle-left {
+  background-image: url(../images/fa/angle-left.svg);
+}
+.fa-angle-right {
+  background-image: url(../images/fa/angle-right.svg);
+}
+.fa-folder {
+  background-image: url(../images/fa/folder.svg);
+}
+.fa-folder-o {
+  background-image: url(../images/fa/folder-o.svg);
+}
+.fa-search {
+  background-image: url(../images/fa/search.svg);
+}
+.fa-archive {
+  background-image: url(../images/fa/archive.svg);
+}
+.fa-book {
+  background-image: url(../images/fa/book.svg);
+}
+.fa-calendar-check-o {
+  background-image: url(../images/fa/calendar-check-o.svg);
+}
+.fa-calendar-plus-o {
+  background-image: url(../images/fa/calendar-plus-o.svg);
+}
+.fa-calendar-o {
+  background-image: url(../images/fa/calendar-o.svg);
+}
+.fa-language {
+  background-image: url(../images/fa/language.svg);
+}
+.fa-link {
+  background-image: url(../images/fa/link.svg);
+}
+.fa-chevron-up {
+  background-image: url(../images/fa/chevron-up.svg);
 }
