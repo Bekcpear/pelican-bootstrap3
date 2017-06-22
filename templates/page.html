@@ -46,31 +46,56 @@
 
           {% block content %}
           <section id="content" class="body">
-            <header class="page-header panel-primary">
-              <div class="panel-heading">
-                <h1 class="entry-title">
-                  <div class="row">
-                    <div class="col-lg-20 col-md-18">
-                      {{ page.title }}
+            <article class="jumbotron page">
+              <header class="page-header panel-primary">
+                <div class="panel-heading" style="border-bottom: 0;">
+                  <h1>
+                    <div class="row">
+                      <div class="col-xl-21 col-lg-20 col-md-18 col-sm-16 col-xs-16">
+                        {{ page.title }}
+                      </div>
+                      <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8">
+                        <ul class="nav trans-in-panel">
+                        {% import 'includes/translations.html' as translations with context %}{{ translations.translations_for(page) }}
+                        </ul>
+                        <ul class="nav">
+                          <li>
+                            <a href="{{SITEURL}}/{{page.slug}}.rst.html" onclick="return getSourceCode();" class="btn btn-primary sourcecode btn-with-icon-in-panel" title="{% trans %}Show source code of this page{%endtrans%}" style="text-align: left;"><i class="fa fa-file-code-o fa-invert"></i></a>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
-                    <div class="col-lg-4 col-md-6">
-                      {% import 'includes/translations.html' as translations with context %}
-                      {{ translations.translations_for(page) }}
-                      <a onclick="$.get('{{SITEURL}}/{{page.slug}}.rst.html', function(data){$('#source-code').html(data)});$('#article-content').toggle();$('#source-content').toggle();" class="btn btn-primary" title="{% trans %}Show source code of this page{%endtrans%}"><i class="fa fa-code"></i></a>
-                    </div>
-                  </div>
-                </h1>
-                {% if PDF_PROCESSOR %}
-                <a href="{{ SITEURL }}/pdf/{{ page.slug }}.pdf">get the pdf</a>
-                {% endif %}
+                  </h1>
+                </div>
+              </header>
+              <div class="entry-content" id="article-content">
+                {{ page.content }}
               </div>
-            </header>
-            <div class="entry-content" id="article-content">
-              {{ page.content }}
-            </div>
-            <div class="entry-content" id="source-content" style="display: none">
-              <div id="source-code"></div>
-            </div>
-            {% include 'includes/comments.html' %}
+              <div class="entry-content" id="source-content" style="display: none">
+                <div id="source-code"></div>
+              </div>
+              {% include 'includes/comments.html' %}
+            </article>
           </section>
           {% endblock %}
+  {% block scripts %}
+  <script>
+    function getSourceCode(){
+      var url = '{{SITEURL}}/{{page.slug}}.rst.html';
+      var xhr = new XMLHttpRequest();
+      xhr.open('GET', url);
+      xhr.onload = function() {
+        if (xhr.status === 200) {
+          $('#source-code').html(xhr.responseText)
+        } else {
+          $('#source-code').html("Get source code error from {{SITEURL}}/{{page.slug}}.rst.html.")
+        }
+      }
+      xhr.send();
+      $('#article-content').toggle();
+      $('#source-content').toggle();
+      $('#source-code').html("waitting..")
+      return false;
+    }
+  </script>
+  {% endblock %}

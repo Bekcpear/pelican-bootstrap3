@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-10 17:13+0800\n"
+"POT-Creation-Date: 2017-06-13 22:28+0800\n"
 "PO-Revision-Date: 2014-12-10 19:22+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: ja\n"
@@ -32,7 +32,7 @@ msgstr "文章一覧"
 msgid "Archives for %(SITENAME)s"
 msgstr "%(SITENAME)s　の文章一覧"
 
-#: templates/article.html:75 templates/article.html:120
+#: templates/article.html:75 templates/article.html:125
 msgid "Table of Contents"
 msgstr "目次"
 
@@ -67,8 +67,8 @@ msgid "Search"
 msgstr "検索"
 
 #: templates/base.html:147
-msgid "All"
-msgstr "一覧"
+msgid "Blogroll"
+msgstr ""
 
 #: templates/base.html:148
 msgid "Atom feeds for all articles"
@@ -98,7 +98,7 @@ msgstr "分類 %(tag)s のフィード"
 msgid "All Articles"
 msgstr "文章の一覧"
 
-#: templates/includes/article_info.html:15 templates/page.html:59
+#: templates/includes/article_info.html:15 templates/page.html:63
 msgid "Show source code of this page"
 msgstr "このページのソースコードを表示する"
 
@@ -182,25 +182,13 @@ msgstr "タグ一覧 - %(SITENAME)s"
 msgid "Tags for %(SITENAME)s"
 msgstr "%(SITENAME)s　のタグ一覧"
 
-#: templates/includes/comments.html:12 templates/includes/comments.html:77
+#: templates/includes/comments.html:10
 msgid "comments"
 msgstr "コメント"
 
-#: templates/includes/comments.html:20
-msgid "Leave a comment from "
-msgstr "GitHub アカウントで"
-
-#: templates/includes/comments.html:20
-msgid " this post's issue page "
-msgstr "この文章のIssueページ"
-
-#: templates/includes/comments.html:20
-msgid " using your Github account."
-msgstr "にコメントしてください"
-
-#: templates/includes/comments.html:51
-msgid "left a comment on"
-msgstr "コメントした"
+#: templates/includes/comments.html:48
+msgid "Please wait.. comments powered by Disqus"
+msgstr ""
 
 #: templates/includes/footer.html:12
 msgid "Powered by"
@@ -209,10 +197,6 @@ msgstr "ここは"
 #: templates/includes/footer.html:13
 msgid "generator"
 msgstr "で生成する"
-
-#: templates/includes/friends.html:9
-msgid "Friends"
-msgstr ""
 
 #: templates/includes/github.html:7
 msgid "GitHub Repos"
@@ -307,5 +291,23 @@ msgstr "ツイート"
 #~ msgstr ""
 
 #~ msgid " Searches related to "
+#~ msgstr ""
+
+#~ msgid "Leave a comment from "
+#~ msgstr "GitHub アカウントで"
+
+#~ msgid " this post's issue page "
+#~ msgstr "この文章のIssueページ"
+
+#~ msgid " using your Github account."
+#~ msgstr "にコメントしてください"
+
+#~ msgid "left a comment on"
+#~ msgstr "コメントした"
+
+#~ msgid "All"
+#~ msgstr "一覧"
+
+#~ msgid "Friends"
 #~ msgstr ""
 

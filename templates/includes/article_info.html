@@ -16,7 +16,7 @@
                         {% if DISQUS_SITENAME and DISQUS_DISPLAY_COUNTS %}
                         <span class="comment">
                           <a href="#comments" class="btn btn-primary btn-with-icon-in-panel">
-                            <i class="fa fa-comments-o fa-invert"></i><span class="disqus-comment-count icon-label" data-disqus-url="{{ MAINSITEURL }}/{{ article.url }}"></span>
+                            <i class="fa fa-comments-o fa-invert"></i><span class="disqus-comment-count icon-label" data-disqus-identifier="{{ article.slug }}"></span>
                           </a>
                         </span>
                         {% endif %}

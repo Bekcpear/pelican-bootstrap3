@@ -26,9 +26,9 @@ http://www.tipue.com/search
 {
      font: 300 15px/1.7 Roboto, sans-serif;
 }
-.tipue_search_content_bold, .tipue_search_related_bold
+.tipue_search_related_bold
 {
-     font-weight: 400;
+     font-weight: bold;
 }
 
 
@@ -115,6 +115,7 @@ http://www.tipue.com/search
 }
 .tipue_search_content_bold
 {
+     background-color: #ffe879;
      color: #333;
 }
 .tipue_search_content_debug

@@ -13,6 +13,10 @@
   background-color: transparent;
 }
 
+ul p {
+  text-indent: 0;
+}
+
 img, table {
   max-width: 100%;
 }
@@ -22,6 +26,7 @@ div#loading-block > section#categories,
 div#loading-block > section#content.well,
 .article-item > article.panel,
 article > header.page-header,
+article > div.entry-content > div.add-license,
 article > div.entry-content {
   margin: 0 10px 20px 10px;
   padding: 20px;
@@ -152,7 +157,7 @@ article > div.entry-content {
 }
 
 article .entry-content,
-.atricle-item .panel-body {
+.article-item .panel-body {
   a {
     border-bottom: 0.5px dotted;
     &:hover,
@@ -509,6 +514,7 @@ section#comments.comments {
 }
 
 #jtop {
+  z-index: 10;
   position: fixed;
   bottom: 50px;
   left: 50px;

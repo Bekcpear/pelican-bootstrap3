@@ -114,6 +114,11 @@
               </div>
 
               <div class="entry-content" id="article-content">
+                {% if article.license %}
+                <div class="add-license">
+                  {{ article.license }}
+                </div>
+                {% endif %}
                 {% if article.toc %}
                 <div class="panel panel-default" id="article-toc">
                   <div class="panel-heading">
@@ -133,7 +138,7 @@
                 <div id="source-code"></div>
               </div>
 
-              <div class="row" id="prevnext">
+              <div class="row hidden-print" id="prevnext">
                 <div class="col-xs-12">
                   {% if article.prev_article %}
                   <a href="{{ SITEURL }}/{{article.prev_article.url}}">

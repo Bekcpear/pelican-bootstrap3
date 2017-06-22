@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-10 17:13+0800\n"
+"POT-Creation-Date: 2017-06-13 22:28+0800\n"
 "PO-Revision-Date: 2017-06-03 01:23+0800\n"
 "Last-Translator: \n"
 "Language: zh\n"
@@ -32,7 +32,7 @@ msgstr "归档"
 msgid "Archives for %(SITENAME)s"
 msgstr "%(SITENAME)s 的归档"
 
-#: templates/article.html:75 templates/article.html:120
+#: templates/article.html:75 templates/article.html:125
 msgid "Table of Contents"
 msgstr "目录"
 
@@ -67,8 +67,8 @@ msgid "Search"
 msgstr "搜索"
 
 #: templates/base.html:147
-msgid "All"
-msgstr "归档"
+msgid "Blogroll"
+msgstr "友链"
 
 #: templates/base.html:148
 msgid "Atom feeds for all articles"
@@ -98,7 +98,7 @@ msgstr "订阅分类 %(tag)s"
 msgid "All Articles"
 msgstr "全部文章"
 
-#: templates/includes/article_info.html:15 templates/page.html:59
+#: templates/includes/article_info.html:15 templates/page.html:63
 msgid "Show source code of this page"
 msgstr "显示这篇文章的源文件"
 
@@ -182,25 +182,13 @@ msgstr "全部标签 - %(SITENAME)s"
 msgid "Tags for %(SITENAME)s"
 msgstr "%(SITENAME)s 的全部标签"
 
-#: templates/includes/comments.html:12 templates/includes/comments.html:77
+#: templates/includes/comments.html:10
 msgid "comments"
 msgstr "留言（需要科学上网以打开 Disqus）"
 
-#: templates/includes/comments.html:20
-msgid "Leave a comment from "
-msgstr "请用你的 GitHub 账户登录并在"
-
-#: templates/includes/comments.html:20
-msgid " this post's issue page "
-msgstr "这篇文章的 Issue 页下"
-
-#: templates/includes/comments.html:20
-msgid " using your Github account."
-msgstr "留言"
-
-#: templates/includes/comments.html:51
-msgid "left a comment on"
-msgstr "留言于"
+#: templates/includes/comments.html:48
+msgid "Please wait.. comments powered by Disqus"
+msgstr "请稍等.. 留言功能由 Disqus 驱动"
 
 #: templates/includes/footer.html:12
 msgid "Powered by"
@@ -209,10 +197,6 @@ msgstr "网站由"
 #: templates/includes/footer.html:13
 msgid "generator"
 msgstr "驱动"
-
-#: templates/includes/friends.html:9
-msgid "Friends"
-msgstr ""
 
 #: templates/includes/github.html:7
 msgid "GitHub Repos"
@@ -253,4 +237,19 @@ msgstr "最新推文"
 
 #~ msgid "Latest Weibo"
 #~ msgstr "最新微博"
+
+#~ msgid "Leave a comment from "
+#~ msgstr "请用你的 GitHub 账户登录并在"
+
+#~ msgid " this post's issue page "
+#~ msgstr "这篇文章的 Issue 页下"
+
+#~ msgid " using your Github account."
+#~ msgstr "留言"
+
+#~ msgid "left a comment on"
+#~ msgstr "留言于"
+
+#~ msgid "All"
+#~ msgstr "归档"
 

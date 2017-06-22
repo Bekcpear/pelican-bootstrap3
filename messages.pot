@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-10 17:13+0800\n"
+"POT-Creation-Date: 2017-06-13 22:28+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -31,7 +31,7 @@ msgstr ""
 msgid "Archives for %(SITENAME)s"
 msgstr ""
 
-#: templates/article.html:75 templates/article.html:120
+#: templates/article.html:75 templates/article.html:125
 msgid "Table of Contents"
 msgstr ""
 
@@ -66,7 +66,7 @@ msgid "Search"
 msgstr ""
 
 #: templates/base.html:147
-msgid "All"
+msgid "Blogroll"
 msgstr ""
 
 #: templates/base.html:148
@@ -97,7 +97,7 @@ msgstr ""
 msgid "All Articles"
 msgstr ""
 
-#: templates/includes/article_info.html:15 templates/page.html:59
+#: templates/includes/article_info.html:15 templates/page.html:63
 msgid "Show source code of this page"
 msgstr ""
 
@@ -181,24 +181,12 @@ msgstr ""
 msgid "Tags for %(SITENAME)s"
 msgstr ""
 
-#: templates/includes/comments.html:12 templates/includes/comments.html:77
+#: templates/includes/comments.html:10
 msgid "comments"
 msgstr ""
 
-#: templates/includes/comments.html:20
-msgid "Leave a comment from "
-msgstr ""
-
-#: templates/includes/comments.html:20
-msgid " this post's issue page "
-msgstr ""
-
-#: templates/includes/comments.html:20
-msgid " using your Github account."
-msgstr ""
-
-#: templates/includes/comments.html:51
-msgid "left a comment on"
+#: templates/includes/comments.html:48
+msgid "Please wait.. comments powered by Disqus"
 msgstr ""
 
 #: templates/includes/footer.html:12
@@ -207,10 +195,6 @@ msgstr ""
 
 #: templates/includes/footer.html:13
 msgid "generator"
-msgstr ""
-
-#: templates/includes/friends.html:9
-msgid "Friends"
 msgstr ""
 
 #: templates/includes/github.html:7

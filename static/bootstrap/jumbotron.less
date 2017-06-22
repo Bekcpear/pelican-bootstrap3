@@ -41,13 +41,8 @@
     &:extend(.well);
   }
 
-  p:not(.first) {
-    text-indent: 2em;
-  }
-  
-
   @media screen and (min-width: @screen-sm-min) {
-    ///padding: (@jumbotron-padding * 1.6) 0;
+    ///padding: (@jumbotron-padding * 1.4) 0;
 
     .container &,
     .container-fluid & {
@@ -67,12 +62,20 @@
       font-size: ceil((@font-size-base * 1.1));
       font-weight: 120;
     }
+
+    pre {
+      font-size: ceil((@font-size-base * 1.1 - 4));
+    }
   }
 
   @media screen and (min-width: @screen-md-min) {
     p, ol, ul, td, dl {
       font-size: ceil((@font-size-base * 1.2));
       font-weight: 140;
+    }
+
+    pre {
+      font-size: ceil((@font-size-base * 1.2 - 4));
     }
 
     h1, .h1 { font-size: ceil(@font-size-h1 * 1.2); }
@@ -85,8 +88,30 @@
 
   @media screen and (min-width: @screen-lg-min) {
     p, ol, ul, td, dl {
-      font-size: ceil(@font-size-base * 1.4);
+      font-size: ceil(@font-size-base * 1.3);
       font-weight: 170;
+    }
+
+    pre {
+      font-size: ceil((@font-size-base * 1.3 - 4));
+    }
+
+    h1, .h1 { font-size: ceil(@font-size-h1 * 1.3); }
+    h2, .h2 { font-size: ceil(@font-size-h2 * 1.3); }
+    h3, .h3 { font-size: ceil(@font-size-h3 * 1.3); }
+    h4, .h4 { font-size: ceil(@font-size-h4 * 1.3); }
+    h5, .h5 { font-size: ceil(@font-size-h5 * 1.3); }
+    h6, .h6 { font-size: ceil(@font-size-h6 * 1.3); }
+  }
+
+  @media screen and (min-width: @screen-xl-min) {
+    p, ol, ul, td, dl {
+      font-size: ceil(@font-size-base * 1.4);
+      font-weight: 200;
+    }
+
+    pre {
+      font-size: ceil((@font-size-base * 1.4 - 4));
     }
 
     h1, .h1 { font-size: ceil(@font-size-h1 * 1.4); }
@@ -95,20 +120,6 @@
     h4, .h4 { font-size: ceil(@font-size-h4 * 1.4); }
     h5, .h5 { font-size: ceil(@font-size-h5 * 1.4); }
     h6, .h6 { font-size: ceil(@font-size-h6 * 1.4); }
-  }
-
-  @media screen and (min-width: @screen-xl-min) {
-    p, ol, ul, td, dl {
-      font-size: ceil(@font-size-base * 1.6);
-      font-weight: 200;
-    }
-
-    h1, .h1 { font-size: ceil(@font-size-h1 * 1.6); }
-    h2, .h2 { font-size: ceil(@font-size-h2 * 1.6); }
-    h3, .h3 { font-size: ceil(@font-size-h3 * 1.6); }
-    h4, .h4 { font-size: ceil(@font-size-h4 * 1.6); }
-    h5, .h5 { font-size: ceil(@font-size-h5 * 1.6); }
-    h6, .h6 { font-size: ceil(@font-size-h6 * 1.6); }
   }
 
   @media screen and (min-width: @screen-md-min) {
@@ -135,7 +146,7 @@
       ///width: floor(@container-lg/2 - 160px);; /* for margin */
       margin: 10px;
       .panel-heading {
-        font-size: ceil((@font-size-base * 1.4));
+        font-size: ceil((@font-size-base * 1.3));
         font-weight: 170;
       }
       p, ol, ul, td, dl {
@@ -152,11 +163,11 @@
       ///width: floor(@container-xl/3 - 100px);; /* for margin */
       margin: 10px;
       .panel-heading {
-        font-size: ceil((@font-size-base * 1.6));
+        font-size: ceil((@font-size-base * 1.4));
         font-weight: 200;
       }
       p, ol, ul, td, dl {
-        font-size: ceil((@font-size-base * 1.4));
+        font-size: ceil((@font-size-base * 1.3));
         font-weight: 170;
       }
     }
