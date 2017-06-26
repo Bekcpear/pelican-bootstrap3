@@ -12,9 +12,60 @@
     {% if article.tags %}
   <meta name="keywords" content="{{ article.tags|join(',')|striptags }}" />
     {% endif %}
-    {% if article.summary %}
+    {% if article.description and article.summary %}
+  <meta name="description" content="{{ article.description }} | {{ article.summary|striptags|escape }}" />
+    {% elif article.summary %}
   <meta name="description" content="{{ article.summary|striptags|escape }}" />
     {% endif %}
+  {% endblock %}
+
+  {% block schemaMeta %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "NewsArticle",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "{{ SITEURL }}/{{ article.url }}"
+      },
+      "headline": "{{ article.title|striptags }}",
+      "image": {
+        "@type": "ImageObject",
+        {% if article.featured_image %}
+        "url": "{{ MAINSITEURL }}/{{ article.featured_image }}",
+        {% else %}
+        "url": "",
+        {% endif %}
+        "width": 700,
+        "height": 700
+      },
+      "datePublished": "{{ article.date.isoformat() }}",
+      {% if article.modified %}
+      "dateModified": "{{ article.modified.isoformat() }}",
+      {% else %}
+      "dateModified": "{{ article.date.isoformat() }}",
+      {% endif %}
+      "author": {
+        "@type": "Person",
+        "name": "{{ article.author }}"
+      },
+       "publisher": {
+        "@type": "Organization",
+        "name": "{{ SITENAME }}",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "{{ MAINSITEURL }}/static/images/favicon/g-logo.png",
+          "width": 600,
+          "height": 60
+        }
+      },
+      {% if article.description %}
+      "description": "{{ article.description }}"
+      {% else %}
+      "description": "{% trans %}An article of {{ SITENAME }}.{% endtrans %}"
+      {% endif %}
+    }
+  </script>
   {% endblock %}
 
   {% block opengraph %}
@@ -25,7 +76,11 @@
   <meta property="og:type" content="article"/>
   <meta property="og:title" content="{{ article.title|striptags|escape }}"/>
   <meta property="og:url" content="{{ SITEURL }}/{{ article.url }}"/>
+    {% if article.description and article.summary %}
+  <meta property="og:description" content="{{ article.description }} | {{ article.summary|striptags|escape }}"/>
+    {% elif article.summary %}
   <meta property="og:description" content="{{ article.summary|striptags|escape }}"/>
+    {% endif %}
   <meta property="article:published_time" content="{{ article.date.strftime("%Y-%m-%d") }}" />
     {% if article.category %}
   <meta property="article:section" content="{{ article.category }}" />
@@ -54,10 +109,30 @@
           {% block breadcrumbs %}
             {% if DISPLAY_BREADCRUMBS %}
               {% if DISPLAY_CATEGORY_IN_BREADCRUMBS %}
-          <ol class="breadcrumb">
-            {# <li><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa fa-home"></i></a></li> #}
-            <li><a href="{{ SITEURL }}/{{ article.category.url }}" title="{{ article.category }}">{{ article.category }}</a></li>
-            <li class="active">{{ article.title }}</li>
+          <ol class="breadcrumb" {{ BREADCRUMBLIST_OL }}>
+            <li {{ BREADCRUMBLIST_LI }}>
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ SITENAME }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/home.svg" alt="Home"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="1" />{% endif %}
+            </li>
+            ›
+            <li {{ BREADCRUMBLIST_LI }}>
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ article.category.url }}">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ article.category }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/list.svg" alt="Category"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
+            </li>
+            ›
+            <li {{ BREADCRUMBLIST_LI }} class="active">
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ article.url }}">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ article.title }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/file-text.svg" alt="Article"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="3" />{% endif %}
+            </li>
           </ol>
               {% else %}
           <ol class="breadcrumb">

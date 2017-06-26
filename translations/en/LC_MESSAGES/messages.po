@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PROJECT VERSION\n"
 "Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2017-06-13 22:28+0800\n"
+"POT-Creation-Date: 2017-06-23 15:13+0800\n"
 "PO-Revision-Date: 2014-12-10 19:24+0900\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language: en\n"
@@ -23,25 +23,30 @@ msgstr ""
 msgid "Archives - %(SITENAME)s"
 msgstr ""
 
-#: templates/archives.html:7
+#: templates/archives.html:16 templates/base.html:182
 msgid "Archives"
 msgstr ""
 
-#: templates/archives.html:14
+#: templates/archives.html:27
 #, python-format
 msgid "Archives for %(SITENAME)s"
 msgstr ""
 
-#: templates/article.html:75 templates/article.html:125
+#: templates/article.html:60
+#, python-format
+msgid "An article of %(SITENAME)s."
+msgstr ""
+
+#: templates/article.html:140 templates/article.html:190
 msgid "Table of Contents"
 msgstr ""
 
-#: templates/article.html:94
+#: templates/article.html:159
 #, python-format
 msgid "Permalink to %(title)s"
 msgstr ""
 
-#: templates/article.html:111
+#: templates/article.html:176
 msgid "License"
 msgstr ""
 
@@ -50,27 +55,31 @@ msgstr ""
 msgid "Articles by %(author)s - %(SITENAME)s"
 msgstr ""
 
+#: templates/author.html:18 templates/authors.html:18
+msgid "Authors"
+msgstr ""
+
 #: templates/authors.html:3
 #, python-format
 msgid "Authors - %(SITENAME)s"
 msgstr ""
 
-#: templates/base.html:94 templates/includes/aboutme.html:9
+#: templates/base.html:128 templates/includes/aboutme.html:9
 #, python-format
 msgid "About %(AUTHOR)s"
 msgstr ""
 
-#: templates/base.html:137 templates/base.html:138
+#: templates/base.html:171 templates/base.html:172
 #: templates/includes/sidebar.html:10 templates/includes/sidebar.html:11
 #: templates/search.html:3
 msgid "Search"
 msgstr ""
 
-#: templates/base.html:147
+#: templates/base.html:181 templates/base.html:186
 msgid "Blogroll"
 msgstr ""
 
-#: templates/base.html:148
+#: templates/base.html:183
 msgid "Atom feeds for all articles"
 msgstr ""
 
@@ -79,26 +88,22 @@ msgstr ""
 msgid "Categories - %(SITENAME)s"
 msgstr ""
 
-#: templates/categories.html:8 templates/category.html:13
-#: templates/includes/sidebar.html:54
+#: templates/categories.html:17 templates/category.html:22
+#: templates/includes/sidebar.html:53
 msgid "Categories"
 msgstr ""
 
-#: templates/categories.html:15
+#: templates/categories.html:28
 #, python-format
 msgid "All Categories for %(SITENAME)s"
 msgstr ""
 
-#: templates/category.html:15
+#: templates/category.html:35
 #, python-format
 msgid "Feeds for category %(tag)s"
 msgstr ""
 
-#: templates/index.html:15
-msgid "All Articles"
-msgstr ""
-
-#: templates/includes/article_info.html:15 templates/page.html:63
+#: templates/includes/article_info.html:15 templates/page.html:76
 msgid "Show source code of this page"
 msgstr ""
 
@@ -162,12 +167,12 @@ msgstr ""
 msgid "'Searches related to'"
 msgstr ""
 
-#: templates/includes/sidebar_tags.html:7 templates/tag.html:13
-#: templates/tags.html:8
+#: templates/includes/sidebar_tags.html:7 templates/tag.html:22
+#: templates/tags.html:17
 msgid "Tags"
 msgstr ""
 
-#: templates/tag.html:15
+#: templates/tag.html:35
 #, python-format
 msgid "Feeds for tag %(tag)s"
 msgstr ""
@@ -177,7 +182,7 @@ msgstr ""
 msgid "Tags - %(SITENAME)s"
 msgstr ""
 
-#: templates/tags.html:15
+#: templates/tags.html:28
 #, python-format
 msgid "Tags for %(SITENAME)s"
 msgstr ""
@@ -249,5 +254,11 @@ msgstr ""
 #~ msgstr ""
 
 #~ msgid "All"
+#~ msgstr ""
+
+#~ msgid "All Articles"
+#~ msgstr ""
+
+#~ msgid "An article of n.i.f.UME."
 #~ msgstr ""
 

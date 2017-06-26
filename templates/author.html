@@ -4,10 +4,28 @@
 
           {% block breadcrumbs %}
             {% if DISPLAY_BREADCRUMBS %}
-          <ol class="breadcrumb">
-            {# <li><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa fa-home"></i></a></li> #}
-            <li><a href="{{ SITEURL }}/{{ AUTHORS_URL|default('authors.html') }}" title="Authors">Authors</a></li>
-            <li class="active">{{ AUTHOR }}</li>
+          <ol class="breadcrumb" {{ BREADCRUMBLIST_OL }}>
+            <li {{ BREADCRUMBLIST_LI }}>
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ SITENAME }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/home.svg" alt="Home"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="1" />{% endif %}
+            </li>
+            ›
+            <li {{ BREADCRUMBLIST_LI }}>
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ AUTHORS_URL|default('authors.html') }}">
+                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Authors{% endtrans %}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/users.svg" alt="Users"/></a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
+            </li>
+            ›
+            <li {{ BREADCRUMBLIST_LI }} class="active">
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ author.url }}">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ author }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/user.svg" alt="User"/></a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="3" />{% endif %}
+            </li>
           </ol>
             {% endif %}
           {% endblock %}

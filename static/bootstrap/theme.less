@@ -151,6 +151,17 @@ article > header.page-header {
     }
   }
 }
+
+article.page .page-header li.dropdown a {
+  position: relative;
+  display: flex;
+  span.caret {
+    position: relative;
+    top: 6px;
+    margin-left: 3px;
+  }
+}
+
 article > div.entry-content {
   border-top-left-radius: 0;
   border-top-right-radius: 0;
@@ -463,38 +474,38 @@ ul.tagcloud > li {
   padding-right: 0;
 }
 
-.modal {
-  background: rgba(0, 0, 0, 0.4);
-  .vertical-alignment-helper {
-    display:table;
-    height: 100%;
-    width: 100%;
-    pointer-events:none;
-  }
-  .vertical-align-center {
-    /* To center vertically */
-    width: 100%;
-    display: table-cell;
-    vertical-align: middle;
-    pointer-events:none;
-  }
-  .modal-content {
-    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
-    width:inherit;
-    height:inherit;
-    /* To center horizontally */
-    margin: 0 auto;
-    pointer-events:all;
-    a {
-      display: block;
-      margin: 0 auto;
-      img {
-        display: block;
-        margin: 0 auto;
-      }
-    }
-  }
-}
+//.modal {
+//  background: rgba(0, 0, 0, 0.4);
+//  .vertical-alignment-helper {
+//    display:table;
+//    height: 100%;
+//    width: 100%;
+//    pointer-events:none;
+//  }
+//  .vertical-align-center {
+//    /* To center vertically */
+//    width: 100%;
+//    display: table-cell;
+//    vertical-align: middle;
+//    pointer-events:none;
+//  }
+//  .modal-content {
+//    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+//    width:inherit;
+//    height:inherit;
+//    /* To center horizontally */
+//    margin: 0 auto;
+//    pointer-events:all;
+//    a {
+//      display: block;
+//      margin: 0 auto;
+//      img {
+//        display: block;
+//        margin: 0 auto;
+//      }
+//    }
+//  }
+//}
 
 section#comments.comments {
   > div > div > div#disqus-comments {

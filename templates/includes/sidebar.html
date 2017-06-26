@@ -3,15 +3,14 @@
           {% endif %}
           <section>
             <div class="sidebar-container">
-
-              <ul class="list-unstyled hidden-xs hidden-sm">
-                <li>
-                  <form class="search-form hidden-xs hidden-sm" action="{{ SITEURL }}/search.html">
-                    <input type="search" id="tipue_search_input" class="search-query form-control" placeholder="{% trans %}Search{% endtrans %}" name="q" required />
-                    <input type="submit" value="{% trans %}Search{% endtrans %}" class="submit" />
-                  </form>
-                </li>
-              </ul>
+              <div class="hidden-xs hidden-sm" itemscope itemtype="http://schema.org/WebSite">
+                <meta itemprop="url" content="{{ SITEURL }}/" />
+                <form class="search-form hidden-xs hidden-sm" action="{{ SITEURL }}/search.html" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
+                  <meta itemprop="target" content="{{ SITEURL }}/search.html?q={q}" />
+                  <input itemprop="query-input" type="search" id="tipue_search_input" class="search-query form-control" placeholder="{% trans %}Search{% endtrans %}" name="q" required />
+                  <input type="submit" value="{% trans %}Search{% endtrans %}" class="submit" />
+                </form>
+              </div>
 
 {#
               {% if ABOUT_PAGE %}

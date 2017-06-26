@@ -2,13 +2,13 @@
 {% set sitelangname = dict(zh_CN='zh-Hans', zh_TW='zh-Hant', en_US='en-us') %}
 <html lang="{% block html_lang %}{{ sitelangname[LOCALE[0].split('.')[0]] }}{% endblock %}">
 <head>
+  <meta charset="utf-8">
   <title>{% macro title() -%}
   {% block title %}{{ SITENAME }}{% endblock %}
   {%- endmacro %}{{title()}}</title>
   <!-- Using the latest rendering mode for IE -->
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width,minimum-scale=1,initial-scale=1">
 
   <link rel="shortcut icon" href="{{ MAINSITEURL }}/favicon.ico">
   <link rel="apple-touch-icon" sizes="57x57" href="{{ MAINSITEURL }}/static/images/favicon/apple-touch-icon-57x57.png">
@@ -36,6 +36,7 @@
 
   {% block meta %}
   <meta name="author" content="{{ AUTHOR }}" />
+  <meta name="description" content="{{ SITEDESC }}" />
   {% endblock %}
 
   {# Open Graph tags #}
@@ -48,7 +49,7 @@
   <meta property="og:type" content="website"/>
   <meta property="og:title" content="{{ SITENAME }}"/>
   <meta property="og:url" content="{{ SITEURL }}"/>
-  <meta property="og:description" content="{{ SITENAME }}"/>
+  <meta property="og:description" content="{{ SITEDESC }}"/>
     {% if OPEN_GRAPH_IMAGE %}
   <meta property="og:image" content="{{ SITEURL }}/{{ OPEN_GRAPH_IMAGE }}"/>
     {% endif %}
@@ -62,6 +63,7 @@
   <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/bootstrap/bootstrap.less" rel="stylesheet/less" type="text/css">
   {% else %}
   <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/bootstrap.min.css" rel="stylesheet">
+  <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/imageviewer.css" rel="stylesheet">
   {% endif %}
   <link href="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/css/pygments/{{ PYGMENTS_STYLE|default('native') }}.css" rel="stylesheet">
   {% if DOCUTIL_CSS %}
@@ -85,6 +87,25 @@
     }
   </style>
   {% endif %}
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "Organization",
+      "url": "{{ MAINSITEURL }}",
+      "logo": "{{ MAINSITEURL }}/static/images/favicon/favicon-96x96.png"
+    }
+  </script>
+  <script type="application/ld+json">
+    {
+      "@context": "http://schema.org",
+      "@type": "WebSite",
+      "name": "{{ SITENAME }}",
+      "alternateName": "{{ SITECNAME }}",
+      "url": "{{ MAINSITEURL }}"
+    }
+  </script>
+  {% block schemaMeta %}
+  {% endblock %}
   {% if SERVICEWORKER %}
   <script>
     if ('serviceWorker' in navigator) {
@@ -111,7 +132,7 @@
       </a>
       {% endif %}
       {% if not HIDE_SITENAME %}
-      <a href="{{ SITEURL }}/" class="navbar-brand">
+      <a href="{{ SITEURL }}/" class="navbar-brand hidden-xs">
         <span>{{ SITENAME }}</span>
       </a>
       {% endif %}
@@ -160,7 +181,11 @@
 
       <ul class="nav navbar-nav navbar-right hidden-xs">
         <li><a href="{{ SITEURL }}/{{ BLOGROLL_PAGE | default('blogroll.html') }}"><i class="fa fa-heart-o"></i><span class="icon-label">{{ gettext('Blogroll') }}</span></a></li>
+        <li><a href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}"><i class="fa fa-th-list"></i><span class="icon-label">{{ gettext('Archives') }}</span></a></li>
         <li><a href="{{ SITEURL }}/{{ FEED_URL | default('feeds/atom.xml') }}" title="{% trans %}Atom feeds for all articles{% endtrans %}"><i class="fa fa-rss"></i></a></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right hidden-xl hidden-lg hidden-md hidden-sm">
+        <li><a href="{{ SITEURL }}/{{ BLOGROLL_PAGE | default('blogroll.html') }}" title="{{ gettext('Blogroll') }}"><i class="fa fa-heart-o"></i></a></li>
       </ul>
     </div><!-- /.navbar-collapse end -->
   </div><!-- /.navbar end -->
@@ -184,8 +209,9 @@
           {% endblock %}
         </div>
 
+        {#
         <!-- Modal -->
-        <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
           <div class="vertical-alignment-helper">
             <div class="modal-dialog vertical-align-center">
               <div class="modal-content">
@@ -196,6 +222,7 @@
             </div><!-- /.modal-dialog -->
           </div>
         </div><!-- /.modal -->
+      #}
       </div>
 
       {% if not HIDE_SIDEBAR or ABOUT_ME %}
@@ -220,6 +247,7 @@
 
   <!-- Include all compiled plugins (below), or include individual files as needed -->
   <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/bootstrap.min.js"></script>
+  <script src="{{ SITEURL }}/{{ THEME_STATIC_DIR }}/js/imageviewer.min.js"></script>
 
   {% include 'includes/github-js.html' %}
   {% include 'includes/ga.html' %}
@@ -239,10 +267,15 @@
       {% endif %}
       $('#affix-toc').width($('#sidebar aside').width());
       $(".img-responsive").css("cursor","pointer").on('click',function(){
+        var imgSrc = this.src;
+        ImageViewer().show(imgSrc);
+        {#
         var sr=$(this).attr('src');
         $('#mimg').attr('src',sr);
         $('#myModal').modal('show');
+        #}
       });
+      $('a.external').on('click', function(){if(this.href !== '' && this.href.search('#') !== 0){window.open(this.href);return false;}});
       $('a.panel-heading').on('mouseenter',function(){$(this).parent().css('box-shadow','0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)');});
       $('div.panel-heading-widget').on('mouseenter',function(){$(this).parent().css('box-shadow','0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22)');});
       $('a.panel-heading').on('mouseleave',function(){$(this).parent().css('box-shadow','');});

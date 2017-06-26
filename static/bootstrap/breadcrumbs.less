@@ -7,20 +7,32 @@
   padding: @breadcrumb-padding-vertical @breadcrumb-padding-horizontal;
   margin-bottom: @navbar-margin-bottom;
   list-style: none;
+  color: @breadcrumb-color;
   ///background-color: @breadcrumb-bg;
   ///border-radius: @border-radius-base;
 
   > li {
     display: inline-block;
+    margin: 0 5px;
+    color: @text-color;
 
-    &:before {
-      content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
-      padding: 0 5px;
-      color: @breadcrumb-color;
-    }
+    ///&:before {
+    ///  content: "@{breadcrumb-separator}\00a0"; // Unicode space added since inline-block means non-collapsing white-space
+    ///  padding: 0 5px;
+    ///  color: @breadcrumb-color;
+    ///}
   }
 
-  > .active {
+  > li a {
+    color: @text-color;
+  }
+
+  > .active,
+  > .active a {
     color: @breadcrumb-active-color;
+  }
+
+  img {
+    display: none;
   }
 }

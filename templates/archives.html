@@ -2,9 +2,22 @@
   {% block title %}{% trans %}Archives - {{ SITENAME }}{% endtrans %}{% endblock %}
           {% block breadcrumbs %}
           {% if DISPLAY_BREADCRUMBS %}
-          <ol class="breadcrumb">
-            {# <li><a href="{{ SITEURL }}/" title="{{ SITENAME }}"><i class="fa fa-home"></i></a></li> #}
-            <li class="active">{% trans %}Archives{% endtrans %}</li>
+          <ol class="breadcrumb" {{ BREADCRUMBLIST_OL }}>
+            <li {{ BREADCRUMBLIST_LI }}>
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/">
+                <span {{ BREADCRUMBLIST_NAME }}>{{ SITENAME }}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/home.svg" alt="Home"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="1" />{% endif %}
+            </li>
+            ›
+            <li {{ BREADCRUMBLIST_LI }} class="active">
+              <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
+                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Archives{% endtrans %}</span>
+                <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/archive.svg" alt="Archives"/>
+              </a>
+              {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
+            </li>
           </ol>
           {% endif %}
           {% endblock %}
