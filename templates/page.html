@@ -68,12 +68,9 @@
                         {{ page.title }}
                       </div>
                       <div class="col-xl-3 col-lg-4 col-md-6 col-sm-8 col-xs-8">
-                        <ul class="nav trans-in-panel">
-                        {% import 'includes/translations.html' as translations with context %}{{ translations.translations_for(page) }}
-                        </ul>
                         <ul class="nav">
                           <li>
-                            <a href="{{SITEURL}}/{{page.slug}}.rst.html" onclick="return getSourceCode();" class="btn btn-primary sourcecode btn-with-icon-in-panel" title="{% trans %}Show source code of this page{%endtrans%}" style="text-align: left;"><i class="fa fa-file-code-o fa-invert"></i></a>
+                            <a href="{{SITEURL}}/{{page.slug}}.rst.html" onclick="return getSourceCode();" class="btn btn-primary sourcecode btn-with-icon-in-panel" title="显示源码" style="text-align: left;"><i class="fa fa-file-code-o fa-invert"></i></a>
                           </li>
                         </ul>
                       </div>

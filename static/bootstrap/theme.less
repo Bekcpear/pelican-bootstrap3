@@ -9,9 +9,9 @@
   background-color: #ffcc80;
 }
 
-.highlight pre span.code-line:before::selection {
-  background-color: transparent;
-}
+//.highlight pre span.code-line:before::selection {
+//  background-color: transparent;
+//}
 
 ul p {
   text-indent: 0;
@@ -312,6 +312,7 @@ article > div.entry-content {
 footer {
   a {
     color: @text-color;
+    word-break: break-word;
   }
 }
 
@@ -436,24 +437,24 @@ div.affix {
   opacity: 1;
 }
 
-.highlight pre {
-  counter-reset: linecounter;
-  span.code-line {
-    counter-increment: linecounter;
-    padding-left: 1em;
-    text-indent: -1em;
-    display: inline-block;
-  }
-}
+//.highlight pre {
+//  counter-reset: linecounter;
+//  span.code-line {
+//    counter-increment: linecounter;
+//    padding-left: 1em;
+//    text-indent: -1em;
+//    display: inline-block;
+//  }
+//}
 
-.highlight pre span.code-line:before {
-  content: counter(linecounter);
-  padding-right: 1em;
-  display: inline-block;
-  width: 3em;
-  color: rgba(27,31,35,0.3);
-  text-align: right;
-}
+//.highlight pre span.code-line:before {
+//  content: counter(linecounter);
+//  padding-right: 1em;
+//  display: inline-block;
+//  width: 3em;
+//  color: rgba(27,31,35,0.3);
+//  text-align: right;
+//}
 
 #prevnext {
   padding-left: (@grid-gutter-width / 2);

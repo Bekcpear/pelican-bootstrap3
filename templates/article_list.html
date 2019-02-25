@@ -8,12 +8,6 @@
                 <a href="{{ SITEURL }}/{{ article.url }}" class="panel-heading">
                   <h2 class="col-xl-19 col-lg-19 col-md-20 col-sm-19 col-xs-24" style="float: none;">{{ article.title }}</h2>
                 </a>
-                <div class="panel-heading-widget col-xl-5 col-lg-5 col-md-4 col-sm-5 hidden-xs">
-                  <ul class="nav trans-in-panel">
-                    {% import 'includes/translations.html' as translations with context %}
-                    {{ translations.translations_for(article) }}
-                  </ul>
-                </div>
                 <div class="panel-body">
                   <div class="summary">{{ article.summary }}</div>
                 </div>

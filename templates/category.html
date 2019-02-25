@@ -19,7 +19,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }}>
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/categories.html">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Categories{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>所有类别</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/th-list.svg" alt="Categories"/>
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
@@ -32,7 +32,7 @@
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="3" />{% endif %}
             </li>
-            <li><a href="{{ SITEURL }}/feeds/{{ category|lower }}.atom.xml" title="{% trans %}Feeds for category {{tag}}{% endtrans %}"><i class="fa fa-rss"></i></a></li>
+            <li><a href="{{ SITEURL }}/feeds/{{ category|lower }}.atom.xml" title="订阅类别 {{category}}"><i class="fa fa-rss"></i></a></li>
           </ol>
             {% endif %}
           {% endblock %}

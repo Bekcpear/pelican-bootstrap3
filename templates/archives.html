@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-  {% block title %}{% trans %}Archives - {{ SITENAME }}{% endtrans %}{% endblock %}
+  {% block title %}归档 - {{ SITENAME }}{% endblock %}
           {% block breadcrumbs %}
           {% if DISPLAY_BREADCRUMBS %}
           <ol class="breadcrumb" {{ BREADCRUMBLIST_OL }}>
@@ -13,7 +13,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }} class="active">
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ ARCHIVES_URL | default('archives.html') }}">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Archives{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>归档</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/archive.svg" alt="Archives"/>
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
@@ -24,7 +24,7 @@
 
           {% block content %}
           <section id="content" class="well">
-            <h1>{% trans %}Archives for {{ SITENAME }}{% endtrans %} <span class="badge"> {{ dates | count }}</span></h1>
+            <h1>{{ SITENAME }} 的归档<span class="badge"> {{ dates | count }}</span></h1>
             <div id="archives">
               {% for article in dates %}
               <p>

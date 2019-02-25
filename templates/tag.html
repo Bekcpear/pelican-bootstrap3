@@ -19,7 +19,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }}>
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/tags.html">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Tags{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>标签</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/tags.svg" alt="Tags"/>
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
@@ -32,7 +32,7 @@
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="3" />{% endif %}
             </li>
-            <li><a href="{{ SITEURL }}/feeds/tag-{{ tag|lower }}.atom.xml" title="{% trans %}Feeds for tag {{tag}}{% endtrans %}"><i class="fa fa-rss"></i></a></li>
+            <li><a href="{{ SITEURL }}/feeds/tag-{{ tag|lower }}.atom.xml" title="订阅标签 {{tag}}"><i class="fa fa-rss"></i></a></li>
           </ol>
             {% endif %}
           {% endblock %}

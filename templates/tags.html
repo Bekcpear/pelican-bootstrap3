@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-  {% block title %}{% trans %}Tags - {{ SITENAME }}{% endtrans %}{% endblock %}
+  {% block title %}所有标签 - {{ SITENAME }}{% endblock %}
 
           {% block breadcrumbs %}
             {% if DISPLAY_BREADCRUMBS %}
@@ -14,7 +14,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }} class="active">
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/tags.html">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Tags{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>所有标签</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/tags.svg" alt="Tags"/>
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
@@ -25,7 +25,7 @@
 
           {% block content %}
           <section id="tags" class="well">
-            <h1>{% trans %}Tags for {{ SITENAME }}{% endtrans %}</h1>
+            <h1>{{ SITENAME }} 的所有标签</h1>
             <div class="panel-group" id="accordion">
               {%- for tag, articles in tags|sort %}
               <div class="panel panel-default">
@@ -43,6 +43,7 @@
                 </div>
               </div>
               {% endfor %}
+              <div class="clearBoth"></div>
             </div>
           </section>
           {% endblock %}

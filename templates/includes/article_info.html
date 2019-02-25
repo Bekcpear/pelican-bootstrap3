@@ -9,10 +9,7 @@
                       </span>
                       {% endif %}
                       <div class="control">
-                        <ul class="nav trans-in-panel">
-                          {% import 'includes/translations.html' as translations with context %}{{ translations.translations_for(article) }}
-                        </ul>
-                        <span><a href="{{SITEURL}}/{{article.slug}}.rst.html" onclick="return getSourceCode();" class="btn btn-primary sourcecode btn-with-icon-in-panel" title="{% trans %}Show source code of this page{%endtrans%}"><i class="fa fa-file-code-o fa-invert"></i><span style="display: none;">{% trans %}Show source code of this page{%endtrans%}</span></a></span>
+                        <span><a href="{{SITEURL}}/{{article.slug}}.rst.html" onclick="return getSourceCode();" class="btn btn-primary sourcecode btn-with-icon-in-panel" title="显示源码"><i class="fa fa-file-code-o fa-invert"></i><span style="display: none;">显示源码</span></a></span>
                         {% if DISQUS_SITENAME and DISQUS_DISPLAY_COUNTS %}
                         <span class="comment">
                           <a href="#comments" class="btn btn-primary btn-with-icon-in-panel">

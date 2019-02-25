@@ -1,6 +1,5 @@
 {% extends "base.html" %}
-{% set artlangname = dict(zh='zh-Hans', zht='zh-Hant', en='en-us') %}
-{% block html_lang %}{{ artlangname[article.lang] }}{% endblock %}
+{% block html_lang %}zh-Hans{% endblock %}
   {% block title %}{{ article.title|striptags }} - {{ SITENAME }}{% endblock %}
 
   {% block meta %}
@@ -17,6 +16,16 @@
     {% elif article.summary %}
   <meta name="description" content="{{ article.summary|striptags|escape }}" />
     {% endif %}
+  {% endblock %}
+
+  {% block indentJudge %}
+  {% if article.lang == 'zh' and not article.noindent %}
+  <style>
+    p {
+      text-indent: 2em;
+    }
+  </style>
+  {% endif %}
   {% endblock %}
 
   {% block schemaMeta %}
@@ -62,7 +71,7 @@
       {% if article.description %}
       "description": "{{ article.description }}"
       {% else %}
-      "description": "{% trans %}An article of {{ SITENAME }}.{% endtrans %}"
+      "description": "{{ SITENAME }} 的一篇文章"
       {% endif %}
     }
   </script>
@@ -147,7 +156,7 @@
         {% if article.toc %}
         <div class="panel panel-default affix-top hidden-xs hidden-sm" id="affix-toc">
           <div class="panel-heading">
-            {% trans %}Table of Contents{% endtrans %}
+            目录
           </div>
           <div class="panel-body">
             {{ article.toc }}
@@ -166,7 +175,7 @@
                     <a href="{{ SITEURL }}/{{ article.url }}"
                        rel="bookmark"
                        class="btn btn-primary btn-lg"
-                       title="{% trans title=article.title|striptags %}Permalink to {{ title }}{% endtrans %}">
+                       title="到《{{ article.title }}》的永久链接">
                        <i class="fa fa-link fa-invert"></i>
                     </a>
                   </h1>
@@ -183,7 +192,7 @@
                   {% from 'includes/cc-license.html' import cc_license_mark %}
                   {{ cc_license_mark(cc_name=CC_LICENSE,derivatives=CC_LICENSE_DERIVATIVES,commercial=CC_LICENSE_COMMERCIAL,lang=DEFAULT_LANG,desc=True,attr_props={'title':article.title,'name':article.author if article else AUTHOR,'authorurl':SITEURL ~ '/about.html','arturl':SITEURL ~ '/' ~ article.url,'url':SITEURL}) }}
                 </div>
-                <a data-toggle="collapse" data-target="#license-desc" aria-expanded="false">{% trans %}License{% endtrans %}</a>
+                <a data-toggle="collapse" data-target="#license-desc" aria-expanded="false">License</a>
                 {% endif %}
               {% endif %}
               </div>
@@ -197,7 +206,7 @@
                 {% if article.toc %}
                 <div class="panel panel-default" id="article-toc">
                   <div class="panel-heading">
-                    {% trans %}Table of Contents{% endtrans %}
+                    目录
                   </div>
                   <div class="panel-body">
                     {{ article.toc }}

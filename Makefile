@@ -3,7 +3,8 @@ all: less trans
 less: static/css/bootstrap.min.css
 
 static/css/bootstrap.min.css: static/bootstrap/*.less static/bootstrap/mixins/*.less
-	lessc -x static/bootstrap/bootstrap.less > static/css/bootstrap.min.css
+	lessc static/bootstrap/bootstrap.less > static/css/bootstrap.css
+	/home/u/node_modules/.bin/cleancss --s1 --advanced --compatibility=ie8 static/css/bootstrap.css -o static/css/bootstrap.min.css
 
 TRANS_TARGET=$(shell find -iname "messages.po")
 zh_Hant_TW=$(shell find -iname "zh_Hant_TW")
@@ -29,6 +30,7 @@ cleanmo:
 	find -iname "messages.mo" -exec rm -rf '{}' \;
 
 cleancss:
+	rm -f static/css/bootstrap.css
 	rm -f static/css/bootstrap.min.css
 
 .PHONY: less all trans cleanmo cleancss

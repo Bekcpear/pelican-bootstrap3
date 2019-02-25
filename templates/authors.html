@@ -1,6 +1,6 @@
 {% extends "base.html" %}
 
-  {% block title %}{% trans %}Authors - {{ SITENAME }}{% endtrans %}{% endblock %}
+  {% block title %}所有作者 - {{ SITENAME }}{% endblock %}
 
           {% block breadcrumbs %}
             {% if DISPLAY_BREADCRUMBS %}
@@ -15,7 +15,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }} class="active">
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/{{ AUTHORS_URL|default('authors.html') }}">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Authors{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>所有作者</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/users.svg" alt="Users"/></a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
             </li>

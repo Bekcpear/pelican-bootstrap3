@@ -1,14 +1,14 @@
           {% if DISPLAY_TAGS_ON_SIDEBAR is not defined %}
             {% set DISPLAY_TAGS_ON_SIDEBAR = True %}
           {% endif %}
-          <section>
+          <section style="color: #444">
             <div class="sidebar-container">
               <div class="hidden-xs hidden-sm" itemscope itemtype="http://schema.org/WebSite">
                 <meta itemprop="url" content="{{ SITEURL }}/" />
                 <form class="search-form hidden-xs hidden-sm" action="{{ SITEURL }}/search.html" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
                   <meta itemprop="target" content="{{ SITEURL }}/search.html?q={q}" />
-                  <input itemprop="query-input" type="search" id="tipue_search_input" class="search-query form-control" placeholder="{% trans %}Search{% endtrans %}" name="q" required />
-                  <input type="submit" value="{% trans %}Search{% endtrans %}" class="submit" />
+                  <input itemprop="query-input" type="search" id="tipue_search_input" class="search-query form-control" placeholder="搜索" name="q" required />
+                  <input type="submit" value="搜索" class="submit" />
                 </form>
               </div>
 
@@ -48,9 +48,10 @@
               {% include 'includes/sidebar_tags.html' %}
               {% endif %}
 
+              <!--
               <div class="panel panel-default hidden-xs">
                 <div class="panel-heading">
-                  <a href="{{ SITEURL }}/categories.html"><h4><i class="fa fa-folder fa-lg"></i><span class="icon-label">{% trans %}Categories{% endtrans %}</span></h4></a>
+                  <a href="{{ SITEURL }}/categories.html"><h4><i class="fa fa-folder fa-lg"></i><span class="icon-label">全部分类</span></h4></a>
                 </div>
                 <div class="panel-body">
                   <ul class="list-group" id="categories">
@@ -64,6 +65,7 @@
                   </ul>
                 </div>
               </div>
+              -->
 
               {% if LINKS %}
               {% include 'includes/links.html' %}

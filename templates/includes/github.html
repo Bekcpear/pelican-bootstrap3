@@ -4,7 +4,7 @@
                     {% block sidebartitle %}
                     <div class="panel-heading"> 
                       <h4>
-                        <i class="fa fa-github fa-lg"></i><span class="icon-label">{% trans %}GitHub Repos{% endtrans %}</span>
+                        <i class="fa fa-github fa-lg"></i><span class="icon-label">GitHub 仓库</span>
                       </h4>
                     </div>
                     {% endblock sidebartitle %}
@@ -14,8 +14,5 @@
                   <div id="gh_repos">
                     <p class="list-group-item">Status updating...</p>
                   </div>
-                  {% if GITHUB_SHOW_USER_LINK is defined %}
-                    {% trans %}<a href="https://github.com/{{ GITHUB_USER }}">@{{ GITHUB_USER }}</a> on GitHub{% endtrans %}<br>
-                  {% endif %}
                 </div>
                 {% endblock sidebarcontent %}

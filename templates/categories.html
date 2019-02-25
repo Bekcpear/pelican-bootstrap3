@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-  {% block title %}{% trans %}Categories - {{ SITENAME }}{% endtrans %}{% endblock %}
+  {% block title %}分类 - {{ SITENAME }}{% endblock %}
 
           {% block breadcrumbs %}
             {% if DISPLAY_BREADCRUMBS %}
@@ -14,7 +14,7 @@
             ›
             <li {{ BREADCRUMBLIST_LI }} class="active">
               <a {{ BREADCRUMBLIST_A }} href="{{ SITEURL }}/categories.html">
-                <span {{ BREADCRUMBLIST_NAME }}>{% trans %}Categories{% endtrans %}</span>
+                <span {{ BREADCRUMBLIST_NAME }}>分类</span>
                 <img {{ BREADCRUMBLIST_IMG }} src="/theme/images/fa/th-list.svg" alt="Categories"/>
               </a>
               {% if BREADCRUMBLIST_OL %}<meta itemprop="position" content="2" />{% endif %}
@@ -25,7 +25,7 @@
 
           {% block content %}
           <section id="categories" class="well">
-            <h1>{% trans %}All Categories for {{ SITENAME }}{% endtrans %}</h1>
+            <h1>{{ SITENAME }} 的所有分类</h1>
             <div class="panel-group" id="accordion">
               {% for category, articles in categories %}
               <div class="panel panel-default">

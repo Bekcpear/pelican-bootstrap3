@@ -1,6 +1,6 @@
 {% extends 'base.html' %}
 
-  {% block title %}{% trans %}Search{% endtrans %} - {{ super() }}{% endblock %}
+  {% block title %}搜索 - {{ super() }}{% endblock %}
 
 {% block scripts %}
   {% if 'assets' in PLUGINS %}
@@ -36,7 +36,7 @@
     // Weighting
 
     var tipuesearch_weight = {'weight': [
-         {'url': 'http://nifume.com', 'score': 20}
+         {'url': 'https://moego.me', 'score': 20}
     ]};
 
 
@@ -61,21 +61,21 @@
 
     // Internal strings
 
-    var tipuesearch_string_1 = {% trans %}'No title'{% endtrans %};
-    var tipuesearch_string_2 = {% trans %}'Showing results for'{% endtrans %};
-    var tipuesearch_string_3 = {% trans %}'Search instead for'{% endtrans %};
-    var tipuesearch_string_4 = {% trans %}'1 result'{% endtrans %};
-    var tipuesearch_string_5 = {% trans %}'results'{% endtrans %};
-    var tipuesearch_string_6 = {% trans %}'Back'{% endtrans %};
-    var tipuesearch_string_7 = {% trans %}'More'{% endtrans %};
-    var tipuesearch_string_8 = {% trans %}'Nothing found.'{% endtrans %};
-    var tipuesearch_string_9 = {% trans %}'Common words are largely ignored.'{% endtrans %};
-    var tipuesearch_string_10 = {% trans %}'Search too short'{% endtrans %};
-    var tipuesearch_string_11 = {% trans %}'Should be one character or more.'{% endtrans %};
-    var tipuesearch_string_12 = {% trans %}'Should be'{% endtrans %};
-    var tipuesearch_string_13 = {% trans %}'characters or more.'{% endtrans %};
-    var tipuesearch_string_14 = {% trans %}'seconds'{% endtrans %};
-    var tipuesearch_string_15 = {% trans %}'Searches related to'{% endtrans %};
+    var tipuesearch_string_1 = '无标题';
+    var tipuesearch_string_2 = '结果针对：';
+    var tipuesearch_string_3 = '实际搜索替换为：';
+    var tipuesearch_string_4 = '一个结果';
+    var tipuesearch_string_5 = '个结果';
+    var tipuesearch_string_6 = '返回';
+    var tipuesearch_string_7 = '更多';
+    var tipuesearch_string_8 = '什么都没有。';
+    var tipuesearch_string_9 = '搜索内容太广，换一个吧。';
+    var tipuesearch_string_10 = '搜索内容太短';
+    var tipuesearch_string_11 = '需要一个或多个字符。';
+    var tipuesearch_string_12 = '需要';
+    var tipuesearch_string_13 = '个或多个字符。';
+    var tipuesearch_string_14 = '秒';
+    var tipuesearch_string_15 = '搜索与其相关：';
 
 
     // Internals

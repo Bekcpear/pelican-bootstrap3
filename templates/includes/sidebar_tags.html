@@ -2,9 +2,9 @@
 {% block sidebarxs %}{% endblock sidebarxs %}
 
                     {% block sidebartitle %}
-                    <div class="panel-heading">
+                    <div class="panel-heading" style="padding-bottom:0; padding-left:17px">
                       <h4>
-                        <a href="{{ SITEURL }}/tags.html"><i class="fa fa-tags fa-lg"></i><span class="icon-label">{% trans %}Tags{% endtrans %}</span></a>
+                        <a href="{{ SITEURL }}/tags.html"><i class="fa fa-tags fa-lg"></i><span class="icon-label">标签云</span></a>
                       </h4>
                     </div>
                     {% endblock sidebartitle %}
@@ -17,7 +17,7 @@
                         {% if tc.0.url == tag.url %}
                     <li class="list-group-item tag-{{ tc.1 }}">
                       <a href="{{ SITEURL }}/{{ tag.url }}">
-                        {{ tag }} <sup> {{ articles | count }}</sup>
+                        {{ tag }} <sup> {{ tc.2 }}</sup>
                       </a>
                     </li>
                         {% endif %}
