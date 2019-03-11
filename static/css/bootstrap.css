@@ -1,4 +1,9 @@
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
+
+::-webkit-input-placeholder { color:transparent; }
+::-moz-placeholder { color:transparent; }
+:-ms-input-placeholder { color:transparent; }
+
 html {
   font-family: sans-serif;
   -ms-text-size-adjust: 100%;
@@ -117,6 +122,9 @@ button {
 button,
 select {
   text-transform: none;
+}
+.gsc-input {
+  min-width: 100px;
 }
 button,
 html input[type="button"],
@@ -560,6 +568,8 @@ dd {
 dt {
   font-weight: bold;
   padding-top: 10px;
+  position: relative;
+  left: -2em;
 }
 dd {
   margin-left: 0;

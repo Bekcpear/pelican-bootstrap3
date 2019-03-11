@@ -85,7 +85,7 @@
 
     var startTimer = new Date().getTime();
   </script>
-  <script type="text/javascript" src="{{ MAINSITEURL }}/theme/tipuesearch/tipuesearch.min.js"></script>
+  <script type="text/javascript" src="{{ MAINSITEURL }}/theme/tipuesearch/tipuesearch.js"></script>
   {% endif %}
   <script>
     $(document).ready(function() {

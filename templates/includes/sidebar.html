@@ -4,11 +4,18 @@
           <section style="color: #444">
             <div class="sidebar-container">
               <div class="hidden-xs hidden-sm" itemscope itemtype="http://schema.org/WebSite">
-                <meta itemprop="url" content="{{ SITEURL }}/" />
-                <form class="search-form hidden-xs hidden-sm" action="{{ SITEURL }}/search.html" itemprop="potentialAction" itemscope itemtype="http://schema.org/SearchAction">
-                  <meta itemprop="target" content="{{ SITEURL }}/search.html?q={q}" />
-                  <input itemprop="query-input" type="search" id="tipue_search_input" class="search-query form-control" placeholder="搜索" name="q" required />
-                  <input type="submit" value="搜索" class="submit" />
+                <script>
+                  (function() {
+                    var cx = '016855202528329427677:gpowcz722_s';
+                    var gcse = document.createElement('script');
+                    gcse.type = 'text/javascript';
+                    gcse.async = true;
+                    gcse.src = 'https://cse.google.com/cse.js?cx=' + cx;
+                    var s = document.getElementsByTagName('script')[0];
+                    s.parentNode.insertBefore(gcse, s);
+                  })();
+                </script>
+                <gcse:search></gcse:search>
                 </form>
               </div>
 
