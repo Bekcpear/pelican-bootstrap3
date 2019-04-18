@@ -1,5 +1,7 @@
 # 说明
 
+**弃用了，使用了新写的主题，移步[这里](https://github.com/Bekcpear/moegoTheme)**
+
 这个 fork 在原来 Farseerfc 的 fork 基础上修改，改了还是有点多的。
 
 <s>默认语言从繁中改为简中。</s>
